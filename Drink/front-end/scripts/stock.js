@@ -27,6 +27,8 @@ const shape = document.querySelector('.shape');
 function open() {
     addIngredContainer.classList.toggle("active-n");
     shape.classList.remove('hide');
+    const bgnd = document.querySelector('body');
+    addEventBtn.removeEventListener('click', open);
 }
 
 addEventBtn.addEventListener("click", open);
@@ -50,6 +52,126 @@ function close() {
     addEventSubmit.classList.remove("send-error");
     addIngredContainer.classList.remove("active-n");
     shape.classList.add('hide');
+    addEventBtn.addEventListener("click", open);
 }
 
 closeBtn.addEventListener("click", close);
+
+// Arreglo provisional
+const INGREDIENTES = [
+    {
+        ingrediente: 'fresas',
+        categoria: 'frutas',
+        precio: 5
+    },
+    {
+        ingrediente: 'nueces',
+        categoria: 'topping',
+        precio: 5
+    },
+    {
+        ingrediente: 'crema batida',
+        categoria: 'topping',
+        precio: 5
+    }
+];
+
+//Funcionalidad para mostrar los ingredientes en stock
+function updateIngredients(){
+    // Recuperar el contenedor para mostrar los ingredientes
+    const newDrinks = document.querySelector('.new-drinks');
+
+    newDrinks.innerHTML = "";
+
+    INGREDIENTES.forEach((event) =>{
+        // Crear los nuevo elementos HTML
+        const container = document.createElement('article');
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+        const name = document.createElement('p');
+        const category = document.createElement('p');
+        const spanCategory = document.createElement('span');
+        const price = document.createElement('p');
+        const spanPrice = document.createElement('span');
+
+        console.log(event);
+
+        img.src = 'images/strawberries.png';
+        img.alt = 'Nueva Bebida';
+            
+        figure.appendChild(img);
+
+        name.classList.add('drink-name');
+        name.textContent = event.ingrediente;
+
+        spanCategory.textContent = event.categoria;
+        category.classList.add('category');
+        category.textContent = 'Categoría: ';
+        category.appendChild(spanCategory);
+
+        spanPrice.textContent = event.precio;
+        price.classList.add('price');
+        price.textContent = 'Precio Extra: ';
+        price.appendChild(spanPrice);
+
+        container.appendChild(figure);
+        container.appendChild(name);
+        container.appendChild(category);
+        container.appendChild(price);
+
+        container.classList.add('product');
+
+        newDrinks.appendChild(container);
+        console.log(container);
+    });
+
+    if(newDrinks === ""){
+        newDrinks = `
+        <section class="no-event">
+            <p>No hay reservaciones</p>
+        </section>
+        `;
+    }
+}
+
+updateIngredients();
+
+// Funcionalidad para agregar ingredientes
+addEventSubmit.addEventListener("click", () =>{
+    const ingredientName = addIngredientName.value;
+    const ingredientCategory = addIngredientCategory.value;
+    const ingredientPrice = addIngredientPrice.value;
+    
+    if(ingredientName === "" || ingredientCategory === "" || ingredientPrice === ""){
+        let requeridos = document.querySelector("#error");
+        requeridos.classList.remove('hide-message');
+        addEventContainer.classList.add('error-add-new-event');
+        addEventSubmit.classList.add('send-error');
+        addEventInput.classList.add('error-add-event-input');
+        requeridos.classList.add('error-message');
+        let mensajeError = document.querySelector("#errorMensaje");
+        mensajeError.textContent = "Debes proporcionar todos los campos";   
+        return;
+    }
+
+    const newEvent = {
+        ingrediente: ingredientName,
+        categoria: ingredientCategory,
+        precio: ingredientPrice
+    };
+
+    INGREDIENTES.push({
+        ingrediente: ingredientName,
+        categoria: ingredientCategory,
+        precio: ingredientPrice
+    });
+    
+    console.log(INGREDIENTES);
+
+    addIngredientName.value = "";
+    addIngredientCategory.value = "";
+    addIngredientPrice.value = "";
+
+    close();
+    updateIngredients();
+});
