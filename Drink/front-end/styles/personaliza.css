@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Relaway", Tahoma, Arial, sans-serif;
+}
+
+html {
+    background-color: #bd87c1;
+}
+
+body {
+    font-size: 0.9em;
+    width: 100%;
+    display: grid;
+}
+
+/*Header Section*/
+header {
+    padding: 1em 2em;
+    display: flex;
+    font-size: 0.9em;
+    position: fixed;
+    background-color: #eee3e1;
+    z-index: 999;
+    margin: 0;
+    height: 4em;
+    width: 100%;
+}
+
+header .logo {
+    transform: translateY(-50%);
+    width: 8%;
+    margin-right: 2em;
+    height: 200%;
+}
+
+/*Nav Bar*/
+nav ul {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right: 2em;
+    width: 10em;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul li a:visited{
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul .active {
+    font-weight: bold;
+}
+/*End Nav Bar*/
+
+header a {
+    text-decoration: none;
+    color: #000;
+}
+
+header a:visited {
+    text-decoration: none;
+    color: #000;
+}
+
+header .options {
+    margin-left: 43em;
+    display: flex;
+    width: 12em;
+}
+
+header .search {
+    cursor: pointer;
+    height: 1.2em;
+    margin-left: 2em;
+}
+/*End Header*/
+
+
+/*Main*/
+main {
+    margin-top: 3em;
+}
+
+.oculto {
+    display: none;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: 400;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.add {
+    display: flex;
+}
+
+.drink {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 70%;
+    padding: 5em 0;
+    margin: 2em;
+}
+
+.drink .drink-glass{
+    height: 25em;
+    transition: opacity 1s ease-in-out;
+}
+
+/*Floating Topping*/
+.topping1 {
+    float:inline-start;
+    position: absolute;
+    height: 7em;
+    transform: translate(-33em, 0em);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.topping1:hover {
+    height: 10em;
+}
+
+.topping2 {
+    float:inline-start;
+    position: absolute;
+    height: 7em;
+    transform: translate(-17em, -8em);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.topping2:hover {
+    height: 10em;
+}
+
+
+.topping3 {
+    float:inline-start;
+    position: absolute;
+    height: 7em;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.topping3:hover {
+    height: 10em;
+}
+
+
+.topping4 {
+    float: right;
+    position: absolute;
+    height: 7em;
+    transform: translate(0em, 20em);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.topping4:hover {
+    height: 10em;
+}
+
+
+.topping5 {
+    float: inline-end;
+    position: absolute;
+    height: 7em;
+    transform: translate(-17em, 25em);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.topping5:hover {
+    height: 10em;
+}
+
+.topping6 {
+    float: left;
+    position: absolute;
+    height: 7em;
+    transform: translate(-33em, 20em);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.topping6:hover {
+    height: 10em;
+}
+
+.topping-new {
+    float: left;
+    position: absolute;
+    height: 7em;
+    transform: translate(-17em, 10em);
+}
+
+/*Animación*/
+@keyframes traslacion1 {
+    0%{z-index: 1;}
+    50%{transform: translate(-25em, 5em);}
+    99%{transform: translate(-17em, 10em);}
+    100%{display: none;}
+    to{opacity: 0;}
+}
+.move1 {
+    transform: translate(-17em, 10em);
+    opacity: 0;
+}
+
+@keyframes traslacion2 {
+    0%{z-index: 1;}
+    50%{transform: translate(-17em, 0em);}
+    99%{transform: translate(-17em, 10em);}
+    100%{display: none;}
+    to{opacity: 0;}
+}
+.move2 {
+    transform: translate(-17em, 10em);
+    opacity: 0;
+}
+
+@keyframes traslacion3 {
+    0%{z-index: 1;}
+    50%{transform: translate(-10em, 5em);}
+    99%{transform: translate(-17em, 10em);}
+    100%{display: none;}
+    to{opacity: 0;}
+}
+.move3 {
+    transform: translate(-17em, 10em);
+    opacity: 0;
+}
+
+@keyframes traslacion4 {
+    0%{z-index: 1;}
+    50%{transform: translate(-10em, 15em);}
+    100%{transform: translate(-17em, 10em);}
+    100%{display: none;}
+    to{opacity: 0;}
+}
+.move4 {
+    transform: translate(-17em, 10em);
+    opacity: 0;
+}
+
+@keyframes traslacion5 {
+    0%{z-index: 1;}
+    50%{transform: translate(-17em, 17em);}
+    99%{transform: translate(-17em, 10em);}
+    100%{display: none;}
+    to{opacity: 0;}
+}
+.move5 {
+    transform: translate(-17em, 10em);
+    opacity: 0;
+}
+
+@keyframes traslacion6 {
+    0%{z-index: 1;}
+    50%{transform: translate(-25em, 15em);}
+    99%{transform: translate(-17em, 10em);}
+    100%{display: none;}
+    to{opacity: 0;}
+}
+.move6 {
+    transform: translate(-17em, 10em);
+    opacity: 0;
+}
+
+.drink-result {
+    position: absolute;
+    height: 25em;
+    opacity: 0;
+    transform: translateX(-24em);
+    transition: opacity 2s ease-in-out;
+}
+
+.aparecer {
+    opacity: 1;
+}
+
+.desaparecer {
+    opacity: 0;
+}
+
+/*En Floating Toppings*/
+
+.ingredients {
+    background-color: #eee3e1;
+    border-radius: 2em;
+    float: right;
+    margin: 2em;
+    padding: 2em;
+    width: 30%;
+}
+
+.ingredients h2 {
+    background-color: #646d00;
+    padding: 1em;
+    margin: 2em 0 1em 0;
+    border-radius: 2em;
+    color: #fff;
+    cursor: pointer;
+}
+
+.ingredients h2:hover {
+    background-color: transparent;
+    border: 1pt solid #646d00;
+    color: #646d00;
+}
+
+.ingredients .toppings{
+    justify-content: space-between;
+}
+
+.ingredients .topping {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ingredients .toppings figure {
+    background: linear-gradient(to right, #000000, #333333);
+    border-radius: 100%;
+    width: 5em;
+    height: 5em;
+    margin: 1em;
+}
+
+.ingredients .toppings figure img {
+    width: 4em;
+    transform: translateY(10%);
+    border-radius: 100%;
+}
+
+.ingredients .toppings figure img:hover {
+    width: 5em;
+}
+
+.order {
+    display: flex;
+}
+
+#order {
+    border: none;
+    outline: none;
+    border-radius: 1.2em;
+    height: 2.5em;
+    width: 10em;
+    color: #fff;
+    background-color: #47005e;
+    font-family: "Relaway", Tahoma, Arial, sans-serif;
+    margin: 1em 0 0 1em;
+    cursor: pointer;
+}
+
+#order:hover {
+    background-color: transparent;
+    border: 1pt solid #47005e;
+    color: #47005e;
+}
+
+#create {
+    border: none;
+    outline: none;
+    border-radius: 1.2em;
+    height: 2.5em;
+    width: 10em;
+    color: #fff;
+    background-color: #47005e;
+    font-family: "Relaway", Tahoma, Arial, sans-serif;
+    margin: 1em 0 0 1em;
+    cursor: pointer;
+}
+
+#create:hover {
+    background-color: transparent;
+    border: 1pt solid #47005e;
+    color: #47005e;
+}
+
+.hide-message {
+    display: none;
+}
+
+.error-message {
+    margin-top: 0.5em;
+    font-size: 1em;
+    font-weight: 900;
+    width: 100%;
+    padding: 0.5em;
+    color: #646d00;
+}

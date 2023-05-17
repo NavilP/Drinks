@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Relaway", Tahoma, Arial, sans-serif;
+}
+
+html {
+    background-color: #bd87c1;
+}
+
+body {
+    font-size: 0.9em;
+    width: 100%;
+    display: flex;
+}
+
+/*Navbar Lateral*/
+
+nav {
+    background-color: #47005e;
+    margin: 1em;
+    width: 20%;
+    color: #fff;
+    font-size: 0.8em;
+    height: 100vh;
+    border-radius: 1em;
+}
+
+nav .logo {
+    width: 10em;
+    margin: 1em;
+}
+
+nav .options {
+    margin: 1em;
+}
+
+nav .options li {
+    list-style: none;
+    padding: 2em;
+    align-items: center;
+    margin: 1em;
+    border-radius: 1.5em;
+    height: 6em;
+}
+
+nav .options li a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+}
+
+nav .options li a:visited{
+    text-decoration: none;
+    color: #fff;
+}
+
+nav .options li a img {
+    padding-right: 1em;
+    height: 70%;
+}
+
+nav .options li:hover {
+    background-color: #77019e;
+}
+
+/*Main*/
+
+main {
+    background-color: rgba(255,255,255,0.3);
+    margin: 1em;
+    width: 80%;
+    color: #fff;
+    font-size: 0.8em;
+    height: 100%;
+    border-radius: 1em;
+}
+
+.title {
+    display: grid;
+}
+
+.title img {
+    width: 90%;
+    margin-left: 5em;
+}
+
+.title .actualizar{
+    border: none;
+    outline: none;
+    width: 10em;
+    height: 2.5em;
+    background-color: #bd87c1;
+    border-radius: 2em;
+    transform: translate(7em,-5em);
+    cursor: pointer;
+}
+
+.title .actualizar:hover{
+    background-color: transparent;
+    border-radius: 2em;
+    border: 1pt solid #bd87c1;
+    color: #fff;
+}
+
+/*Bebidas Nuevas*/
+
+.title-new{
+    font-size: 2em;
+    text-align: center;
+    margin: 1em;
+    color: #47005e;
+}
+
+.new-drinks{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: #000;
+}
+
+.product {
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+.product figure {
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 0;
+}
+
+.product figure img {
+    height: 10em;
+}
+
+.product .drink-name {
+    font-weight: 400;
+    margin-top: 1em;
+}
+
+.product .price {
+    font-weight: 700;
+    margin-top: 0.5em;
+}

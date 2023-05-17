@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/sing-up.css">
+    <script src="scripts/accounts.js" defer></script>
+    <script src="scripts/login.js" defer></script>
+    <title>Iniciar Sesion</title>
+</head>
+<body>
+
+    <header>
+        <!--Logo-->
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <nav>
+            <!--Inicio (Home)-->
+            <!--Comprar-->
+            <!--Personalizar-->
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+        <section class="options">
+            <p class="log-in"><a href="sing-up.html">Registrate</a></p>
+            <img src="images/search.png" alt="Search" class="search">
+            <!--Inicio de Sesion-->
+            <!--Buscar-->
+        </section>
+    </header>
+
+    <main>
+
+        <img src="images/drink1.png" alt="Drink" class="drink-bgnd">
+        <img src="images/drink8.png" alt="Drink" class="coffee">
+        <p class="coffee-title neon-text">Personaliza Tus Bebidas</p>
+
+        <h1>Iniciar Sesión</h1>
+        <section class="form-box">
+            <form onsubmit="submitForm(event)">
+                <section class="data">
+                    <div id="error-message" class="hide">
+                        <img src="images/error.png" alt="Error">
+                        <p>Error: Usuario o contraseña incorrectas</p>
+                    </div>
+
+                    <div class="inputbox">
+                        <input type="text" id="user-name" required>
+                        <label for="">Nombre de usuario o correo electrónico</label>
+                    </div>
+
+                    <div class="inputbox">
+                        <input type="password" id="password" required>
+                        <label for="">Contraseña</label>
+                    </div>
+                    
+                </section>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </section>
+
+        
+        
+    </main>
+</body>
+</html>

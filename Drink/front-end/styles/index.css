@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Relaway", Tahoma, Arial, sans-serif;
+}
+
+html {
+    background-color: #bd87c1;
+}
+
+body {
+    font-size: 0.9em;
+    width: 100%;
+    display: grid;
+}
+
+/*Header Section*/
+header {
+    padding: 1em 2em;
+    display: flex;
+    font-size: 0.9em;
+    position: fixed;
+    background-color: #eee3e1;
+    z-index: 999;
+    margin: 0;
+    height: 4em;
+    width: 100%;
+}
+
+header .logo {
+    transform: translateY(-50%);
+    width: 8%;
+    margin-right: 2em;
+    height: 200%;
+}
+
+/*Nav Bar*/
+nav ul {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right: 2em;
+    width: 10em;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul li a:visited{
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul .active {
+    font-weight: bold;
+}
+/*End Nav Bar*/
+
+header a {
+    text-decoration: none;
+    color: #000;
+}
+
+header a:visited {
+    text-decoration: none;
+    color: #000;
+}
+
+header .options {
+    margin-left: 43em;
+    display: flex;
+    width: 12em;
+}
+
+header .search {
+    cursor: pointer;
+    height: 1.2em;
+    margin-left: 2em;
+}
+/*End Header*/
+
+/*Main Section*/
+main{
+    width: 100%;
+    margin: 0;
+}
+
+/*Carroussel*/
+.carr {
+    background: linear-gradient(to right, #000000, #333333);
+    height: 35em;
+    margin: 5em 2em 2em 2em;
+    border-radius: 1em;
+    padding: 5em 3em 2em 3em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.carr-title {
+    font-weight: bolder;
+    position: relative;
+    float: left;
+    margin: 8em 0;
+    margin-right: 5em;
+    display: grid;
+    align-items: center;
+    color: #fff;
+}
+
+.carr-title .title {
+    font-size: 2em;
+    padding: 0;
+    margin-left: 0;
+    font-weight: 500;
+    transform: translateY(0.5em);
+    color: #fff;
+}
+
+.carr-title .subsubtitle {
+    font-size: 6em;
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+    color: #bd87c1;
+    transform: translateY(-0.4em);
+    position: relative;
+    z-index: 0;
+}
+
+.carr-title .subtitle {
+    font-size: 4em;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+.carr-drink {
+    float: right;
+    position: relative;
+    height: 25em;
+    width: 20em;
+    z-index: 999;
+}
+
+.carr-drink img {
+    height: 100%;
+    width: 120%;
+}
+
+.carr-title .buy {
+    height: 2.5em;
+    width: 20%;
+    border-radius: 2em;
+    background-color: #47005e;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.carr-title .buy:hover {
+    background-color: transparent;
+    border: 1pt solid #47005e;
+    color: #bd87c1;
+}
+/*End Carrousel*/
+
+/*Best Seller*/
+.best-seller {
+    margin: 0;
+}
+
+.best-title {
+    font-size: 2em;
+    padding-top: 0.8em;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.best-subtitle {
+    font-weight: 500;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+/*Article Best Seller*/
+.best-seller .fish {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 2em;
+}
+
+.betta-fish {
+    margin-left: 2em;
+}
+
+.best-seller figure {
+    /*background: linear-gradient(to right, #000000, #333333);*/
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 0;
+}
+
+.best-seller figure img {
+    height: 10em;
+}
+
+.best-seller .betta-name {
+    font-weight: 400;
+    margin-top: 1em;
+}
+
+.best-seller .price {
+    font-weight: 700;
+    margin-top: 0.5em;
+}
+/*End Best-Seller*/
+
+/*Promo Section*/
+.promo {
+    margin: 4em;
+    padding: 2em;
+    border-radius: 2em;
+    display: flex;
+    background-color: #eee3e1;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo img {
+    width: 30%;
+    float: right;
+    margin-right: 6em;
+}
+
+.promo .description h3 {
+    font-size: 3em;
+    width: 15em;
+    margin-bottom: 1em;
+}
+
+.promo .go {
+    font-size: 5em;
+    border: none;
+    outline: none;
+    background: none;
+    color: #47005e;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.promo .go:hover {
+    color: #bd87c1;
+}
+/*End Promotion*/
+
+/*Footer*/
+footer {
+    display: flex;
+    padding: 6em;
+    background-color: #47005e;
+    height: 20em;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .logo {
+    width: 20%;
+    height: 80%;
+    transform: translateX(-20%);
+}
+
+footer .direc{
+    font-size: 0.8em;
+    width: 10em;
+}
+
+footer .contact {
+    margin-left: 2em;
+    font-size: 0.8em;
+    width: 10em;
+}
+
+footer ul {
+    margin-left: 4em;
+}
+
+footer ul li {
+    list-style: none;
+    margin-right: 2em;
+    width: 10em;
+}
+
+footer ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+footer ul li a:visited{
+    text-decoration: none;
+    color: #fff;
+}
+
+footer ul .active {
+    font-weight: bold;
+}
+
+footer .input {
+    display: flex;
+}
+
+footer .suscribe .big {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+footer .suscribe .input {
+    margin-top: 1em;
+}
+
+#mail {
+    border: none;
+    outline: none;
+    border-radius: 1.5em;
+    height: 3em;
+    width: 25em;
+    padding: 1em;
+    font-family: "Relaway", Tahoma, Arial, sans-serif;
+}
+
+#mail::placeholder {
+    color: #bd87c1;
+}
+
+#suscribe {
+    border: none;
+    outline: none;
+    border-radius: 1.2em;
+    height: 2.5em;
+    width: 7em;
+    color: #000;
+    background-color: #bd87c1;
+    font-family: "Relaway", Tahoma, Arial, sans-serif;
+    transform: translate(-110%, 10%);
+    cursor: pointer;
+}
+
+#suscribe:hover {
+    background-color: transparent;
+    border: 1pt solid #bd87c1;
+    color: #bd87c1;
+}

@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Relaway", Tahoma, Arial, sans-serif;
+}
+
+html {
+    background-color: #bd87c1;
+}
+
+body {
+    font-size: 0.9em;
+    width: 100%;
+    display: grid;
+}
+
+/*Header Section*/
+header {
+    padding: 1em 2em;
+    display: flex;
+    font-size: 0.9em;
+    position: fixed;
+    background-color: #eee3e1;
+    z-index: 999;
+    margin: 0;
+    height: 4em;
+    width: 100%;
+}
+
+header .logo {
+    transform: translateY(-50%);
+    width: 8%;
+    margin-right: 2em;
+    height: 200%;
+}
+
+/*Nav Bar*/
+nav ul {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right: 2em;
+    width: 10em;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul li a:visited{
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul .active {
+    font-weight: bold;
+}
+/*End Nav Bar*/
+
+header a {
+    text-decoration: none;
+    color: #000;
+}
+
+header a:visited {
+    text-decoration: none;
+    color: #000;
+}
+
+header .options {
+    margin-left: 70em;
+    display: flex;
+    width: 12em;
+}
+
+header .search {
+    cursor: pointer;
+    height: 1.2em;
+    margin-left: 2em;
+}
+/*End Header*/
+
+/*-------------------------------------------------------------------- 
+Main
+---------------------------------------------------------------------*/
+main {
+    margin-top: 5em;
+    margin-left: 0;
+}
+
+h1 {
+    font-size: 2em;
+    color: #000000;
+    margin-top: 3em;
+    position: absolute;
+    margin-left: 8em;
+    z-index: 9999;
+}
+
+form {
+    margin-top: 8em;
+    margin-left: 1em;
+}
+
+.form-box {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    margin: 1em 0 0 10em;
+    font-size: 1em;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 2em;
+    backdrop-filter: blur(15px);
+    display: flex;
+}
+
+.data {
+    width: 25em;
+    margin-top: 2em;
+}
+
+.inputbox {
+    position: relative;
+    margin: 2em;
+    background-color: #eee3e1;
+    border-radius: 2em;
+    height: 2.5em;
+}
+
+.inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 1.5em;
+    font-size: 0.8em;
+    transform: translateY(-50%);
+    color: #353535;
+    pointer-events: none;
+    transition: .5s;
+}
+
+input:focus~label,
+input:valid~label {
+    top: -1em;
+    font-weight: 900;
+}
+
+.inputbox input {
+    width: 100%;
+    height: 3.5em;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding-left: 1em;
+    color: #353535;
+    transform: translateY(-10%);
+}
+
+button {
+    width: 30%;
+    height: 3em;
+    border-radius: 2.5em;
+    background: #000000;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 9em;
+    margin-top: 1em;
+}
+
+button:hover {
+    background-color: transparent;
+    border: 1pt solid #000000;
+    color: #000;
+}
+
+/*Checkbox*/
+/* Hide the default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.container {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    font-size: 1em;
+    user-select: none;
+    margin-left: 2.5em;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background: rgb(255, 255, 255);
+    border-radius: 50px;
+    transition: all 0.7s;
+    --spread: 20px;
+}
+
+.container .text {
+    margin-left: 1em;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+    background: black;
+    box-shadow: -10px -10px var(--spread) 0px #5B51D8, 0 -10px var(--spread) 0px #833AB4, 10px -10px var(--spread) 0px #E1306C, 10px 0 var(--spread) 0px #FD1D1D, 10px 10px var(--spread) 0px #F77737, 0 10px var(--spread) 0px #FCAF45, -10px 10px var(--spread) 0px #FFDC80;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid #f0f0f0;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+/*End Checkbox*/
+
+#error-message {
+    align-items: center;
+    margin-left: 2em;
+    width: 20em;
+}
+
+#error-message img{
+    float: left;
+    margin-right: 1em;
+}
+
+#error-message p{
+    color: #000000;
+    text-align: left;
+}
+
+#error-message a {
+    text-decoration: none;
+    color: #000000;
+    float: right;
+    transform: translateY(-1.2em);
+}
+
+#error-message1 {
+    align-items: center;
+    margin-left: 2em;
+    width: 20em;
+}
+
+#error-message1 img{
+    float: left;
+    margin-right: 1em;
+}
+
+#error-message1 p{
+    color: #000000;
+    text-align: left;
+}
+
+#error-message1 a {
+    text-decoration: none;
+    color: #000000;
+    float: right;
+    transform: translateY(-1.2em);
+}
+
+#error-message2 {
+    align-items: center;
+    margin-left: 2em;
+    width: 20em;
+}
+
+#error-message2 img{
+    float: left;
+    margin-right: 1em;
+}
+
+#error-message2 p{
+    color: #000000;
+    text-align: left;
+}
+
+#error-message2 a {
+    text-decoration: none;
+    color: #000000;
+    float: right;
+    transform: translateY(-1.2em);
+}
+
+.hide {
+    display: none;
+}
+
+.drink-bgnd {
+    height: 30em;
+    margin: 3em;
+    position: absolute;
+}
+
+.coffee-title {
+    z-index: 999;
+    font-family: "Amatic SC";
+    position: absolute;
+    font-size: 5.5em;
+    margin-left: 11.25em;
+    margin-top: 1.5em;
+    width: 3em;
+    font-weight: 700;
+}
+
+.coffee {
+    z-index: 999;
+    position: absolute;
+    width: 20em;
+    margin-left: 40em;
+    margin-top: 5em;
+}
+
+.neon-text {
+    color: #fff;
+    text-shadow:
+        0 0 0.2em #fff,
+        0 0 0.3em #47005e,
+        0 0 0.4em #47005e,
+        0 0 0.5em #47005e,
+        0 0 1em #47005e
+}
