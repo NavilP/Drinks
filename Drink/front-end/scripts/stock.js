@@ -16,6 +16,9 @@ const addIngredientCategory = document.querySelector(".ingredient-category");
 //Recuperar el precio
 const addIngredientPrice= document.querySelector(".ingredient-price");
 
+//Recuperar el precio
+const addIngredientItems= document.querySelector(".ingredient-items");
+
 // Recuperar el boton para guardar los cambios
 const addEventSubmit = document.querySelector(".add-event-btn");
 
@@ -61,19 +64,52 @@ closeBtn.addEventListener("click", close);
 const INGREDIENTES = [
     {
         ingrediente: 'fresas',
-        categoria: 'frutas',
-        precio: 5
+        categoria: 'Frutas',
+        precio: 5,
+        cantidad: 10
     },
     {
         ingrediente: 'nueces',
-        categoria: 'topping',
-        precio: 5
+        categoria: 'Topping',
+        precio: 5,
+        cantidad: 0
     },
     {
         ingrediente: 'crema batida',
-        categoria: 'topping',
-        precio: 5
-    }
+        categoria: 'Frutas',
+        precio: 5,
+        cantidad: 0
+    },
+    {
+        ingrediente: 'fresas',
+        categoria: 'Frutas',
+        precio: 5,
+        cantidad: 10
+    },
+    {
+        ingrediente: 'fresas',
+        categoria: 'Frutas',
+        precio: 5,
+        cantidad: 10
+    },
+    {
+        ingrediente: 'fresas',
+        categoria: 'Salsas y Jarabes',
+        precio: 5,
+        cantidad: 10
+    },
+    {
+        ingrediente: 'fresas',
+        categoria: 'Topping',
+        precio: 5,
+        cantidad: 10
+    },
+    {
+        ingrediente: 'fresas',
+        categoria: 'Salsas y Jarabes',
+        precio: 5,
+        cantidad: 10
+    },
 ];
 
 //Funcionalidad para mostrar los ingredientes en stock
@@ -141,6 +177,7 @@ addEventSubmit.addEventListener("click", () =>{
     const ingredientName = addIngredientName.value;
     const ingredientCategory = addIngredientCategory.value;
     const ingredientPrice = addIngredientPrice.value;
+    const ingredientItems = addIngredientItems.value;
     
     if(ingredientName === "" || ingredientCategory === "" || ingredientPrice === ""){
         let requeridos = document.querySelector("#error");
@@ -157,13 +194,15 @@ addEventSubmit.addEventListener("click", () =>{
     const newEvent = {
         ingrediente: ingredientName,
         categoria: ingredientCategory,
-        precio: ingredientPrice
+        precio: ingredientPrice,
+        cantidad: ingredientItems
     };
 
     INGREDIENTES.push({
         ingrediente: ingredientName,
         categoria: ingredientCategory,
-        precio: ingredientPrice
+        precio: ingredientPrice,
+        cantidad: ingredientItems
     });
     
     console.log(INGREDIENTES);

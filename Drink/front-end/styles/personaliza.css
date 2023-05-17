@@ -329,6 +329,10 @@ h1 {
     text-align: center;
 }
 
+.disable {
+    opacity: 0.5;
+}
+
 .ingredients .toppings figure {
     background: linear-gradient(to right, #000000, #333333);
     border-radius: 100%;
