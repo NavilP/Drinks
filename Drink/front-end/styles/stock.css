@@ -46,12 +46,34 @@ nav .options li {
     margin: 1em;
     border-radius: 1.5em;
     height: 6em;
+    cursor: pointer;
 }
 
 nav .options li a {
     text-decoration: none;
     color: #fff;
     display: flex;
+}
+
+nav .options .edit-title {
+    margin-top: 5em;
+    font-size: 0.9rem;
+    height: 1em;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+}
+
+nav .options .edit-title:hover {
+    background-color: transparent;
+}
+
+nav .options .edit-option {
+    margin-top: 0.5em;
+    height: 2em;
+    display: flex;
+    cursor: pointer;
 }
 
 nav .options li a:visited{
@@ -62,6 +84,10 @@ nav .options li a:visited{
 nav .options li a img {
     padding-right: 1em;
     height: 70%;
+}
+
+nav .options li img {
+    padding-right: 1em;
 }
 
 nav .options li:hover {
@@ -89,14 +115,30 @@ main {
     margin-left: 5em;
 }
 
-.title .actualizar:hover{
-    background-color: transparent;
-    border-radius: 2em;
-    border: 1pt solid #bd87c1;
-    color: #fff;
+/*Botones de edicion*/
+.buttons-edit {
+    display: flex;
+    position: absolute;
+    margin-left: 63%;
+    margin-top: 1.5em;
 }
 
-/*Bebidas Nuevas*/
+.buttons-edit div {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: #47005e;
+    width: 7em;
+    height: 3em;
+    cursor: pointer;
+}
+
+.buttons-edit div img {
+    margin: 0.5em;
+    height: 2em;
+}
+
+/*Ingredientes Disponibles*/
 
 .title-new{
     font-size: 2em;
@@ -112,8 +154,12 @@ main {
 }
 
 .product {
-    margin-left: 2em;
-    margin-bottom: 1em;
+    margin: 0 1.5em 1em 1.5em;
+    cursor: pointer;
+}
+
+.product:hover {
+    margin: 0.2em 1em;
 }
 
 .product figure {
@@ -139,6 +185,16 @@ main {
     font-weight: 700;
     margin-top: 0.5em;
 }
+
+/*Checkbox*/
+.check {
+    position: absolute;
+    z-index: 9999;
+    margin-left: 15em;
+    margin-top: 1em;
+}
+
+/*End Checkbox*/
 
 /*Agregar Ingrediente*/
 .add-new-ingredient {

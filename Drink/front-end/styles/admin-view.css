@@ -119,15 +119,21 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     color: #000;
+    margin: 1em;
 }
 
 .product {
-    margin-left: 2em;
+    margin-left: 1em;
     margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.product:hover {
+    margin: 0.5em;
 }
 
 .product figure {
-    background-color: #fff;
+    background-color: #bd87c1;
     align-items: center;
     justify-content: center;
     text-align: center;

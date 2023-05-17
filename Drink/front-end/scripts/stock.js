@@ -129,6 +129,8 @@ function updateIngredients(){
         const spanCategory = document.createElement('span');
         const price = document.createElement('p');
         const spanPrice = document.createElement('span');
+        // Checkbox
+        const checkBox = document.createElement('input');
 
         console.log(event);
 
@@ -150,6 +152,11 @@ function updateIngredients(){
         price.textContent = 'Precio Extra: ';
         price.appendChild(spanPrice);
 
+        checkBox.type = 'checkbox';
+        checkBox.classList.add('check');
+        checkBox.classList.add('hide');
+
+        container.appendChild(checkBox);
         container.appendChild(figure);
         container.appendChild(name);
         container.appendChild(category);
@@ -214,3 +221,80 @@ addEventSubmit.addEventListener("click", () =>{
     close();
     updateIngredients();
 });
+
+function editarIngrediente(checkBox, parent){
+    const editBtn = document.querySelector('#edit');
+    console.log(parent);
+    //Abrir ventana modal
+    console.log('Editar');
+    //editBtn.removeEventListener('click');
+}
+
+function eliminarIngrediente(checkBox, parent){
+    const deleteBtn = document.querySelector('#delete');
+    //console.log(parent);
+
+    const product = parent.querySelector('.drink-name');
+    let nombre = product.textContent;
+    //Eliminar
+    for (let i = 0; i < INGREDIENTES.length; i++){
+        let ingredient = INGREDIENTES[i];
+        if(ingredient.ingrediente === nombre){
+            delete INGREDIENTES[i];
+        }
+    }
+    updateIngredients();
+    console.log('Eliminado');
+    //deleteBtn.removeEventListener('click');
+}
+
+// Funcionalidad para editar
+function editar(){
+    const editBtn = document.querySelector('#edit');
+    const deleteBtn = document.querySelector('#delete');
+    const checkBoxes = document.querySelectorAll('.check');
+
+    checkBoxes.forEach(checkBox =>{
+        checkBox.addEventListener('change', (event)=>{
+            if(event.currentTarget.checked){
+                const parent = checkBox.parentNode;
+                // Funcionalidad para editar descripcion de un ingrediente
+                editBtn.addEventListener('click', ()=>{
+                    editarIngrediente(checkBox, parent);
+                });
+                // Funcionalidad para eliminar un ingrediente
+                deleteBtn.addEventListener('click', ()=>{
+                    eliminarIngrediente(checkBox, parent);
+                });
+            }
+
+        });
+    });
+}
+
+// Funcionalidad para seleccionar algun ingrediente
+function seleccionar(){
+    const checkBoxes = document.querySelectorAll('.check');
+    const products = document.querySelectorAll('.product');
+    const editBtn = document.querySelector('#edit');
+    const deleteBtn = document.querySelector('#delete');
+
+    checkBoxes.forEach(checkBox =>{
+        checkBox.classList.remove('hide');
+    });
+
+    products.forEach(product =>{
+        product.style.margin = '0 1.5em 1em 1.5em';
+        product.style.cursor = 'auto';
+    });
+
+    editar();
+    // Recuperar los botones de edicion
+    const btnContainer = document.querySelector('.buttons-edit');
+
+    btnContainer.classList.remove('hide');
+}
+
+const select = document.querySelector('#select');
+
+select.addEventListener('click', seleccionar);
