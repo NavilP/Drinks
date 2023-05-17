@@ -143,13 +143,13 @@ main {
 .add-new-ingredient {
     position: absolute;
     left: 70%;
-    width: 30%;
+    width: 25%;
     max-height: 0;
     justify-content: space-between;
     overflow: hidden;
     border-radius: 0.5em;
     background-color: #47005e;
-    transform: translate(-10%, -100%);
+    transform: translate(18%, -100%);
     transition: max-height 0.5s;
     color: #fff;
     overflow-y: scroll;
@@ -157,7 +157,7 @@ main {
 }
 
 .add-new-ingredient.active-n {
-    max-height: 18em;
+    max-height: 20em;
 }
 
 .new-ingredient-title {
@@ -182,13 +182,13 @@ main {
 }
 
 .new-ingredient-title .add-ingredient-title {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
 .add-ingredient-input {
     width: 100%;
-    height: 2.5em;
+    height: 3em;
     display: grid;
     align-items: center;
     justify-content: space-between;
@@ -205,31 +205,29 @@ main {
     border-bottom: 0.063em solid #bd87c1;
     padding-top: 0.8em;
     padding-bottom: 0.5em;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 400;
-    color: #fff;
-    background-color: transparent;
-}
-
-.add-ingredientt-input input::placeholder {
-    color: #fff;
+    background-color: #fff;
+    border-radius: 2em;
+    margin-top: 1em;
+    padding-left: 1em;
 }
 
 .add-ingredient-input input:focus {
-    border-color: #fff;
+    border-color: #000;
 }
 
 .add-ingredient-input input:focus::placeholder {
-    color: #fff;
+    color: #000;
 }
 
 .send {
     display: flex;
     width: 100%;
-    align-items: flex-end;
     justify-content: center;
     padding: 1.25em;
     margin-top: 6em;
+    margin-left: 8em;
 }
 
 .send .add-event-btn {
@@ -238,13 +236,12 @@ main {
     font-weight: 500;
     outline: none;
     border: none;
-    color: #47005e;
-    background-color: #fff;
+    color: #a7a7a7;
+    background-color: transparent;
     border-radius: 0.5em;
     cursor: pointer;
     padding: 0.5em;
-    margin-left: 23em;
-    border: 0.063em solid #fff;
+    border: 0.063em solid #a7a7a7;
 }
 
 .add-event-btn:hover {
@@ -317,4 +314,15 @@ main {
 .add-ingredient-input input {
     width: auto;
     height: auto;
+}
+
+.shape{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 131%;
+}
+
+.hide {
+    display: none;
 }
