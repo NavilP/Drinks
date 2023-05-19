@@ -254,10 +254,13 @@ function editar(){
     const deleteBtn = document.querySelector('#delete');
     const checkBoxes = document.querySelectorAll('.check');
 
+    
     checkBoxes.forEach(checkBox =>{
+        const parent = checkBox.parentNode;
+        
         checkBox.addEventListener('change', (event)=>{
             if(event.currentTarget.checked){
-                const parent = checkBox.parentNode;
+                // 
                 // Funcionalidad para editar descripcion de un ingrediente
                 editBtn.addEventListener('click', ()=>{
                     editarIngrediente(checkBox, parent);
