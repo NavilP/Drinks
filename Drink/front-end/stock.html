@@ -23,6 +23,7 @@
             <li><a href="#"><img src="images/home.png" alt="Home"><p>Home</p></a></li>
             <li class="edit-title"><p>Editar</p></li>
             <li class="edit-option" id="select"><img src="images/home.png" alt="Seleccionar"><p>Seleccionar Ingredientes</p></li>
+            <li class="cancel hide">Cancelar</li>
         </ul>
     </nav>
 
@@ -32,20 +33,22 @@
             <img src="images/header2.png" alt="Header">
         </section>
 
-        <div class="buttons-edit hide">
-            <div id="edit"><img src="images/editar.png" alt="Editar"><p>Editar</p></div>
-            <div id="delete"><img src="images/borrar.png" alt="Borrar"><p>Eliminar</p></div>
-        </div>
-
         <h2 class="title-new">Ingredientes Disponibles</h2>
         <section class="new-drinks">
             <!--Productos creados recientemente-->
             <!--
             <article class="product">
-                <label class="container hide" id="edit-ingred">
-                    <input type="checkbox" id="check">
-                    <div class="checkmark"></div>
-                </label>
+                <div class="buttons-edit">
+                    <form method="POST" class="delete-frm">
+                        <input type="hidden" name="id">
+                        <button class="delete-btn" type="submit">
+                            <img src="images/borrar.png" alt="Eliminar" class="trash">
+                        </button>
+                    </form>
+                    <button class="edit-btn">
+                        <img src="images/editar.png" alt="Editar" class="pencil">
+                    </button>
+                </div>
                 <figure><img src="images/strawberries.png" alt="Nueva Bebida"></figure>
                 <p class="drink-name">Fresas</p>
                 <p class="category">Categoría: <span>Frutas</span></p>
@@ -53,10 +56,15 @@
             </article>
 
             <article class="product">
-                <label class="container hide" id="edit-ingred">
-                    <input type="checkbox" id="check">
-                    <div class="checkmark"></div>
-                </label>
+                <form method="POST" class="delete-frm">
+                    <input type="hidden" name="id">
+                    <button class="delete-btn" type="submit">
+                        <img src="images/borrar.png" alt="Eliminar" class="trash">
+                    </button>
+                </form>
+                <a href="#" class="edit-btn">
+                    <img src="images/editar.png" alt="Editar" class="pencil">
+                </a>
                 <figure><img src="images/strawberries.png" alt="Nueva Bebida"></figure>
                 <p class="drink-name">Fresas</p>
                 <p class="category">Categoría: <span>Frutas</span></p>
@@ -64,10 +72,15 @@
             </article>
 
             <article class="product">
-                <label class="container" id="edit-ingred">
-                    <input type="checkbox" id="check">
-                    <div class="checkmark"></div>
-                </label>
+                <form method="POST" class="delete-frm">
+                    <input type="hidden" name="id">
+                    <button class="delete-btn" type="submit">
+                        <img src="images/borrar.png" alt="Eliminar" class="trash">
+                    </button>
+                </form>
+                <a href="#" class="edit-btn">
+                    <img src="images/editar.png" alt="Editar" class="pencil">
+                </a>
                 <figure><img src="images/strawberries.png" alt="Nueva Bebida"></figure>
                 <p class="drink-name">Fresas</p>
                 <p class="category">Categoría: <span>Frutas</span></p>
@@ -75,10 +88,15 @@
             </article>
 
             <article class="product">
-                <label class="container" id="edit-ingred">
-                    <input type="checkbox" id="check">
-                    <div class="checkmark"></div>
-                </label>
+                <form method="POST" class="delete-frm">
+                    <input type="hidden" name="id">
+                    <button class="delete-btn" type="submit">
+                        <img src="images/borrar.png" alt="Eliminar" class="trash">
+                    </button>
+                </form>
+                <a href="#" class="edit-btn">
+                    <img src="images/editar.png" alt="Editar" class="pencil">
+                </a>
                 <figure><img src="images/strawberries.png" alt="Nueva Bebida"></figure>
                 <p class="drink-name">Fresas</p>
                 <p class="category">Categoría: <span>Frutas</span></p>
@@ -86,10 +104,15 @@
             </article>
 
             <article class="product">
-                <label class="container" id="edit-ingred">
-                    <input type="checkbox" id="check">
-                    <div class="checkmark"></div>
-                </label>
+                <form method="POST" class="delete-frm">
+                    <input type="hidden" name="id">
+                    <button class="delete-btn" type="submit">
+                        <img src="images/borrar.png" alt="Eliminar" class="trash">
+                    </button>
+                </form>
+                <a href="#" class="edit-btn">
+                    <img src="images/editar.png" alt="Editar" class="pencil">
+                </a>
                 <figure><img src="images/strawberries.png" alt="Nueva Bebida"></figure>
                 <p class="drink-name">Fresas</p>
                 <p class="category">Categoría: <span>Frutas</span></p>
@@ -97,10 +120,15 @@
             </article>
 
             <article class="product">
-                <label class="container" id="edit-ingred">
-                    <input type="checkbox" id="check">
-                    <div class="checkmark"></div>
-                </label>
+                <form method="POST" class="delete-frm">
+                    <input type="hidden" name="id">
+                    <button class="delete-btn" type="submit">
+                        <img src="images/borrar.png" alt="Eliminar" class="trash">
+                    </button>
+                </form>
+                <a href="#" class="edit-btn">
+                    <img src="images/editar.png" alt="Editar" class="pencil">
+                </a>
                 <figure><img src="images/strawberries.png" alt="Nueva Bebida"></figure>
                 <p class="drink-name">Fresas</p>
                 <p class="category">Categoría: <span>Frutas</span></p>
@@ -108,10 +136,15 @@
             </article>
 
             <article class="product">
-                <label class="container" id="edit-ingred">
-                    <input type="checkbox" id="check">
-                    <div class="checkmark"></div>
-                </label>
+                <form method="POST" class="delete-frm">
+                    <input type="hidden" name="id">
+                    <button class="delete-btn" type="submit">
+                        <img src="images/borrar.png" alt="Eliminar" class="trash">
+                    </button>
+                </form>
+                <a href="#" class="edit-btn">
+                    <img src="images/editar.png" alt="Editar" class="pencil">
+                </a>
                 <figure><img src="images/strawberries.png" alt="Nueva Bebida"></figure>
                 <p class="drink-name">Fresas</p>
                 <p class="category">Categoría: <span>Frutas</span></p>
@@ -119,10 +152,15 @@
             </article>
 
             <article class="product">
-                <label class="container" id="edit-ingred">
-                    <input type="checkbox" id="check">
-                    <div class="checkmark"></div>
-                </label>
+                <form method="POST" class="delete-frm">
+                    <input type="hidden" name="id">
+                    <button class="delete-btn" type="submit">
+                        <img src="images/borrar.png" alt="Eliminar" class="trash">
+                    </button>
+                </form>
+                <a href="#" class="edit-btn">
+                    <img src="images/editar.png" alt="Editar" class="pencil">
+                </a>
                 <figure><img src="images/strawberries.png" alt="Nueva Bebida"></figure>
                 <p class="drink-name">Fresas</p>
                 <p class="category">Categoría: <span>Frutas</span></p>
@@ -157,6 +195,27 @@
             <button class="add-ingredient">
                 +
             </button>
+        </section>
+
+        <section class="edit-ingredient hide">
+            <!--
+            <section class="ingredient-title">
+                <h3 class="edit-ingredient-title">Editar Ingrediente</h3>
+                <button class="close-edit">x</button>
+            </section>
+            <img src="${icon.src}" alt="Edit">
+            <section class="edit-ingredient-input">
+                <p id="error-edit" class="hide-message-edit">
+                    <strong id="error-title-edit">Error</strong>
+                    <label id="errorMensaje-edit"></label>
+                </p>
+                <input type="text" placeholder="Precio: ${price}" class="ingredient-price-edit">
+                <input type="text" placeholder="Cantidad: ${'10'}" class="ingredient-items-edit">
+            </section>
+            <div class="send-edit">
+                <button class="save-event-btn">Guardar</button>
+            </div>
+            -->
         </section>
 
     </main>

@@ -25,6 +25,13 @@ const addEventSubmit = document.querySelector(".add-event-btn");
 // Recuperar el fondo negro
 const shape = document.querySelector('.shape');
 
+// Sección de edición
+// Recuperar el contenedor para editar
+const editContainer = document.querySelector(".edit-ingredient");
+
+//Recuperar el boton para salir
+const closeBtnEdit = document.querySelector(".close-edit");
+
 //Agregar funcionalidad para abrir y cerrar la ventana
 //Abrir la ventana
 function open() {
@@ -129,10 +136,17 @@ function updateIngredients(){
         const spanCategory = document.createElement('span');
         const price = document.createElement('p');
         const spanPrice = document.createElement('span');
-        // Checkbox
-        const checkBox = document.createElement('input');
+        // Edit buttons
+        const btnContainers = document.createElement('div');
+        const form = document.createElement('form');
+        const input = document.createElement('input');
+        const btnDel = document.createElement('button');
+        const imgDel = document.createElement('img');
+        const btnEdit = document.createElement('button');
+        const imgEdit = document.createElement('img');
+        
 
-        console.log(event);
+        //console.log(event);
 
         img.src = 'images/strawberries.png';
         img.alt = 'Nueva Bebida';
@@ -152,11 +166,40 @@ function updateIngredients(){
         price.textContent = 'Precio Extra: ';
         price.appendChild(spanPrice);
 
-        checkBox.type = 'checkbox';
-        checkBox.classList.add('check');
-        checkBox.classList.add('hide');
+        //Edit
+        btnContainers.classList.add('buttons-edit');
+        btnContainers.classList.add('hide');
 
-        container.appendChild(checkBox);
+        input.type = 'hidden';
+        input.name = 'id';
+
+        imgDel.src = 'images/borrar.png';
+        imgDel.alt = 'Eliminar';
+        imgDel.classList.add('trash');
+
+        btnDel.type = 'submit';
+        btnDel.classList.add('delete-btn');
+        btnDel.appendChild(imgDel);
+
+        form.method = 'POST';
+        //form.action = 'delete2';
+        //form.onsubmit = 'submitForm(event)';
+        form.classList.add('delete-frm');
+        form.appendChild(input);
+        form.appendChild(btnDel);
+
+        imgEdit.src = 'images/editar.png';
+        imgEdit.alt = 'Editar';
+        imgEdit.classList.add('pencil');
+
+        
+        btnEdit.classList.add('edit-btn');
+        btnEdit.appendChild(imgEdit);
+
+        btnContainers.appendChild(form);
+        btnContainers.appendChild(btnEdit);
+
+        container.appendChild(btnContainers);
         container.appendChild(figure);
         container.appendChild(name);
         container.appendChild(category);
@@ -165,7 +208,7 @@ function updateIngredients(){
         container.classList.add('product');
 
         newDrinks.appendChild(container);
-        console.log(container);
+        //console.log(container);
     });
 
     if(newDrinks === ""){
@@ -212,7 +255,7 @@ addEventSubmit.addEventListener("click", () =>{
         cantidad: ingredientItems
     });
     
-    console.log(INGREDIENTES);
+    //console.log(INGREDIENTES);
 
     addIngredientName.value = "";
     addIngredientCategory.value = "";
@@ -222,65 +265,117 @@ addEventSubmit.addEventListener("click", () =>{
     updateIngredients();
 });
 
-function editarIngrediente(checkBox, parent){
-    const editBtn = document.querySelector('#edit');
+function editarIngrediente(parent){
     console.log(parent);
     //Abrir ventana modal
-    console.log('Editar');
+    let nombre = parent.querySelector('.drink-name').textContent;
+    let icon = document.createElement('figure');
+    icon = parent.querySelector('figure').querySelector('img');
+    const price_aux = parent.querySelector('.price');
+    let price = price_aux.querySelector('span').textContent;
+
+    // Recuperar ventana modal
+    const modal = document.querySelector('.edit-ingredient');
+    modal.innerHTML = '';
+
+    // Modificar elementos
+    let editSection = `
+    <section class="ingredient-title">
+        <h3 class="edit-ingredient-title">Editar Ingrediente</h3>
+        <button class="close-edit">x</button>
+    </section>
+    <img src="${icon.src}" alt="Edit">
+    <section class="edit-ingredient-input">
+        <p id="error-edit" class="hide-message-edit">
+            <strong id="error-title-edit">Error</strong>
+            <label id="errorMensaje-edit"></label>
+        </p>
+        <input type="text" placeholder="Precio: ${price}" class="ingredient-price-edit">
+        <input type="text" placeholder="Cantidad: ${'10'}" class="ingredient-items-edit">
+    </section>
+    <div class="send-edit">
+        <button class="save-event-btn">Guardar</button>
+    </div>`;
+
+
+    console.log(price);
+    modal.innerHTML += editSection;
+    modal.classList.remove('hide');
+
+    shape.classList.remove('hide');
+
+    const inputPrice = modal.querySelector('.ingredient-price-edit');
+    inputPrice.addEventListener('change', ()=>{
+        for (let i = 0; i < INGREDIENTES.length; i++){
+            let ingredient = INGREDIENTES[i];
+            if(ingredient.ingrediente === nombre){
+                INGREDIENTES[i].precio = inputPrice.value;
+                console.log(INGREDIENTES[i].precio);
+            }
+        }
+    });
+    //Actualizar los datos
+    const inputItems = modal.querySelector('.ingredient-items-edit');
+    inputItems.addEventListener('change', ()=>{
+        for (let i = 0; i < INGREDIENTES.length; i++){
+            let ingredient = INGREDIENTES[i];
+            if(ingredient.ingrediente === nombre){
+                INGREDIENTES[i].cantidad = inputItems.value;
+                console.log("Cantidad" + INGREDIENTES[i].cantidad);
+            }
+        }
+    });
+    
+    console.log('Editando');
+    const saveChanges = modal.querySelector('.save-event-btn');
+    const cancelBtn = document.querySelector('.cancel');
+    
+    saveChanges.addEventListener('click', ()=>{
+        updateIngredients();
+        //Cerrar ventana
+        console.log('Cerrado');
+
+        editContainer.classList.add('hide');
+        cancelBtn.classList.add('hide');
+        shape.classList.add('hide');
+    });
+
+    const closeBtn = document.querySelector('.close-edit');
+    closeBtn.addEventListener('click', ()=>{
+        editContainer.classList.add('hide');
+        shape.classList.add('hide');
+    });
     //editBtn.removeEventListener('click');
 }
 
-function eliminarIngrediente(checkBox, parent){
-    const deleteBtn = document.querySelector('#delete');
+function eliminarIngrediente(parent){
     //console.log(parent);
 
     const product = parent.querySelector('.drink-name');
     let nombre = product.textContent;
+    console.log(nombre);
+
     //Eliminar
     for (let i = 0; i < INGREDIENTES.length; i++){
         let ingredient = INGREDIENTES[i];
+        console.log(INGREDIENTES);
+        console.log("Ingrediente a eliminar" + ingredient.ingrediente);
         if(ingredient.ingrediente === nombre){
+            
             delete INGREDIENTES[i];
         }
     }
+
+    const cancelBtn = document.querySelector('.cancel');
+    cancelBtn.classList.add('hide');
     updateIngredients();
     console.log('Eliminado');
-    //deleteBtn.removeEventListener('click');
-}
-
-// Funcionalidad para editar
-function editar(){
-    const editBtn = document.querySelector('#edit');
-    const deleteBtn = document.querySelector('#delete');
-    const checkBoxes = document.querySelectorAll('.check');
-
-    
-    checkBoxes.forEach(checkBox =>{
-        const parent = checkBox.parentNode;
-        
-        checkBox.addEventListener('change', (event)=>{
-            if(event.currentTarget.checked){
-                // 
-                // Funcionalidad para editar descripcion de un ingrediente
-                editBtn.addEventListener('click', ()=>{
-                    editarIngrediente(checkBox, parent);
-                });
-                // Funcionalidad para eliminar un ingrediente
-                deleteBtn.addEventListener('click', ()=>{
-                    eliminarIngrediente(checkBox, parent);
-                });
-            }
-
-        });
-    });
 }
 
 // Funcionalidad para seleccionar algun ingrediente
 function seleccionar(){
     const checkBoxes = document.querySelectorAll('.check');
     const products = document.querySelectorAll('.product');
-    const editBtn = document.querySelector('#edit');
-    const deleteBtn = document.querySelector('#delete');
 
     checkBoxes.forEach(checkBox =>{
         checkBox.classList.remove('hide');
@@ -291,11 +386,41 @@ function seleccionar(){
         product.style.cursor = 'auto';
     });
 
-    editar();
     // Recuperar los botones de edicion
-    const btnContainer = document.querySelector('.buttons-edit');
+    const btnContainers = document.querySelectorAll('.buttons-edit');
 
-    btnContainer.classList.remove('hide');
+    btnContainers.forEach(btnContainer =>{
+        btnContainer.classList.remove('hide');
+    });
+
+    const cancelBtn = document.querySelector('.cancel');
+    cancelBtn.classList.remove('hide');
+
+    cancelBtn.addEventListener('click', ()=>{
+        btnContainers.forEach(btnContainer =>{
+            btnContainer.classList.add('hide');
+        });
+        cancelBtn.classList.add('hide');
+    });
+
+    const editBtns = document.querySelectorAll('.edit-btn');
+    const deleteBtns = document.querySelectorAll('.delete-frm');
+
+    editBtns.forEach(editBtn =>{
+        // Funcionalidad para editar descripcion de un ingrediente
+        editBtn.addEventListener('click', ()=>{
+            editarIngrediente(editBtn.parentNode.parentNode);
+        });
+    });
+
+    deleteBtns.forEach(deleteBtn =>{
+        // Funcionalidad para eliminar un ingrediente
+        deleteBtn.addEventListener('click', (event)=>{
+            event.preventDefault();
+            //console.log(deleteBtn.parentNode.parentNode);
+            eliminarIngrediente(deleteBtn.parentNode.parentNode);
+        });
+    });
 }
 
 const select = document.querySelector('#select');
