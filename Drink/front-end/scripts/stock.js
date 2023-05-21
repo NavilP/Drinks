@@ -191,7 +191,7 @@ function updateIngredients() {
 
                 //console.log(event);
 
-                img.src = 'images/strawberries.png';
+                img.src = 'images/ingredientes/strawberries.png';
                 img.alt = 'Nueva Bebida';
 
                 figure.appendChild(img);

@@ -193,7 +193,7 @@ function updateIngredients(){
     const section2 = document.querySelector('#fruits');
     const section3 = document.querySelector('#syrup');
 
-    INGREDIENTES.forEach((event) =>{
+    /*INGREDIENTES.forEach((event) =>{
         let section = '';
 
         if(event.categoria === 'Topping'){
@@ -231,14 +231,61 @@ function updateIngredients(){
         }
 
         section.appendChild(topping);
-    });
+    });*/
+
+    let section = '';
+    axios.get(`http://localhost:3000/api/ingredients`)
+        .then(response => {
+            const datos = response.data;
+            datos.forEach(data =>{
+                if(data.categoria === 'Topping'){
+                    // Recuperar el contenedor para mostrar los ingredientes
+                    section = section1;
+                }
+                else if(data.categoria === 'Frutas'){
+                    // Recuperar el contenedor para mostrar los ingredientes
+                    section = section2;
+                }
+                else if(data.categoria === 'Salsas y Jarabes'){
+                    // Recuperar el contenedor para mostrar los ingredientes
+                    section = section3;
+                }
+    
+                const topping = document.createElement('article');
+                const figure = document.createElement('figure');
+                const img = document.createElement('img');
+                const label = document.createElement('p');
+            
+                img.src = 'images/ingredientes/default.png';
+
+                img.alt = 'Topping';
+            
+                figure.appendChild(img);
+            
+                label.textContent = data.ingrediente;
+                label.classList.add('label');
+            
+                topping.classList.add('topping');
+                topping.appendChild(figure);
+                topping.appendChild(label);
+    
+                if (data.cantidad <= 0){
+                    topping.classList.add('disable');
+                }
+    
+                section.appendChild(topping);
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
 
     const toppings = document.querySelectorAll('.ingredient');
     toppings.forEach(option =>{
         option.addEventListener('click', desplegar);
     });
 
-    const ingredients = document.querySelectorAll('.topping');
+    const ingredients = document.querySelectorAll('.toppings');
     ingredients.forEach(ingredient =>{
         if(!ingredient.classList.contains('disable')){
             ingredient.addEventListener('click', addIngredient);
