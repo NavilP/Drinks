@@ -1,0 +1,16 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "description": "Api con Node.js para el proyecto de Drinks",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Equipo Donkey Maverick",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
