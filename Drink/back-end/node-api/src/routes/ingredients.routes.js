@@ -5,13 +5,13 @@ const router = Router();
 
 router.get('/ingredients', getIngredients);
 
-router.get('/ingredients/:id', getIngredient);
+router.get('/ingredients/:ingred', getIngredient);
 
 router.post('/ingredients', createIngredients);
 
-router.patch('/ingredients/:id', updateIngredients);
+router.patch('/ingredients/:ingred', updateIngredients);
 
-router.delete('/ingredients/:id', deleteIngredients);
+router.delete('/ingredients/:ingred', deleteIngredients);
 
 
 export default router

@@ -15,7 +15,8 @@ export const getIngredients = async (req, res)=> {
 export const getIngredient = async (req, res)=> {
     try{
         //throw new Error('Error inesperado');
-        const [rows] = await pool.query('SELECT * FROM stock WHERE idstock=?', [req.params.id])
+        console.log(req.params.ingred);
+        const [rows] = await pool.query('SELECT * FROM stock WHERE ingrediente=?', [req.params.ingred])
     
         if (rows.length === 0){
             return res.status(404).json({
@@ -33,6 +34,7 @@ export const getIngredient = async (req, res)=> {
 
 // Agregar un nuevo ingrediente
 export const createIngredients = async (req, res)=> {
+    console.log(req.body);
     const {nombre, cantidad, categoria, precio} = req.body;
 
     try {
@@ -55,7 +57,7 @@ export const createIngredients = async (req, res)=> {
 // Eliminar un ingrediente
 export const deleteIngredients = async (req, res)=> {
     try {
-        const [result ]= await pool.query('DELETE FROM stock WHERE idstock=?', [req.params.id]);
+        const [result]= await pool.query('DELETE FROM stock WHERE ingrediente=?', [req.params.ingred]);
     
         if (result.affectedRows === 0){
             return res.status(404).json({
@@ -72,10 +74,15 @@ export const deleteIngredients = async (req, res)=> {
 };
 
 export const updateIngredients = async (req, res)=> {
-    const {id} = req.params;
+    const {nombre} = req.params.ingred;
+    console.log(req.params.ingred);
     const {precio, cantidad} = req.body;
-
+    
     try {
+
+        const [rows] = await pool.query('SELECT * FROM stock WHERE ingrediente=?', [req.params.ingred]);
+        const id = rows[0].idstock;
+
         const [result] = await pool.query('UPDATE stock SET precio=IFNULL(?, precio), cantidad=IFNULL(?,cantidad) WHERE idstock=?', [precio, cantidad, id]);
         
         if(result.affectedRows === 0){
@@ -84,8 +91,8 @@ export const updateIngredients = async (req, res)=> {
             });
         }
 
-        const [rows] = await pool.query('SELECT * FROM stock WHERE idstock=?', [id]);
-        res.json(rows[0]);
+        const [rows_result] = await pool.query('SELECT * FROM stock WHERE ingrediente=?', [req.params.ingred]);
+        res.json(rows_result);
     } catch {
         return res.status(500).json({
             message: 'Something goes wrong'

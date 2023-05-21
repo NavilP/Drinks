@@ -14,10 +14,10 @@ const addIngredientName = document.querySelector(".ingredient-name");
 const addIngredientCategory = document.querySelector(".ingredient-category");
 
 //Recuperar el precio
-const addIngredientPrice= document.querySelector(".ingredient-price");
+const addIngredientPrice = document.querySelector(".ingredient-price");
 
 //Recuperar el precio
-const addIngredientItems= document.querySelector(".ingredient-items");
+const addIngredientItems = document.querySelector(".ingredient-items");
 
 // Recuperar el boton para guardar los cambios
 const addEventSubmit = document.querySelector(".add-event-btn");
@@ -67,66 +67,14 @@ function close() {
 
 closeBtn.addEventListener("click", close);
 
-// Arreglo provisional
-const INGREDIENTES = [
-    {
-        ingrediente: 'fresas',
-        categoria: 'Frutas',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'nueces',
-        categoria: 'Topping',
-        precio: 5,
-        cantidad: 0
-    },
-    {
-        ingrediente: 'crema batida',
-        categoria: 'Frutas',
-        precio: 5,
-        cantidad: 0
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Frutas',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Frutas',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Salsas y Jarabes',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Topping',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Salsas y Jarabes',
-        precio: 5,
-        cantidad: 10
-    },
-];
-
 //Funcionalidad para mostrar los ingredientes en stock
-function updateIngredients(){
+function updateIngredients() {
     // Recuperar el contenedor para mostrar los ingredientes
     const newDrinks = document.querySelector('.new-drinks');
 
     newDrinks.innerHTML = "";
 
-    INGREDIENTES.forEach((event) =>{
+    /*INGREDIENTES.forEach((event) =>{
         // Crear los nuevo elementos HTML
         const container = document.createElement('article');
         const figure = document.createElement('figure');
@@ -217,19 +165,109 @@ function updateIngredients(){
             <p>No hay reservaciones</p>
         </section>
         `;
-    }
+    }*/
+    axios.get(`http://localhost:3000/api/ingredients`)
+        .then(response => {
+            const datos = response.data;
+            // Crear los nuevo elementos HTML
+            datos.forEach(data => {
+                const container = document.createElement('article');
+                const figure = document.createElement('figure');
+                const img = document.createElement('img');
+                const name = document.createElement('p');
+                const category = document.createElement('p');
+                const spanCategory = document.createElement('span');
+                const price = document.createElement('p');
+                const spanPrice = document.createElement('span');
+                // Edit buttons
+                const btnContainers = document.createElement('div');
+                const form = document.createElement('form');
+                const input = document.createElement('input');
+                const btnDel = document.createElement('button');
+                const imgDel = document.createElement('img');
+                const btnEdit = document.createElement('button');
+                const imgEdit = document.createElement('img');
+
+
+                //console.log(event);
+
+                img.src = 'images/strawberries.png';
+                img.alt = 'Nueva Bebida';
+
+                figure.appendChild(img);
+
+                name.classList.add('drink-name');
+                name.textContent = data.ingrediente;
+
+                spanCategory.textContent = data.categoria;
+                category.classList.add('category');
+                category.textContent = 'Categoría: ';
+                category.appendChild(spanCategory);
+
+                spanPrice.textContent = data.precio;
+                price.classList.add('price');
+                price.textContent = 'Precio Extra: ';
+                price.appendChild(spanPrice);
+
+                //Edit
+                btnContainers.classList.add('buttons-edit');
+                btnContainers.classList.add('hide');
+
+                input.type = 'hidden';
+                input.name = 'id';
+
+                imgDel.src = 'images/borrar.png';
+                imgDel.alt = 'Eliminar';
+                imgDel.classList.add('trash');
+
+                btnDel.type = 'submit';
+                btnDel.classList.add('delete-btn');
+                btnDel.appendChild(imgDel);
+
+                form.method = 'POST';
+                //form.action = 'delete2';
+                //form.onsubmit = 'submitForm(event)';
+                form.classList.add('delete-frm');
+                form.appendChild(input);
+                form.appendChild(btnDel);
+
+                imgEdit.src = 'images/editar.png';
+                imgEdit.alt = 'Editar';
+                imgEdit.classList.add('pencil');
+
+
+                btnEdit.classList.add('edit-btn');
+                btnEdit.appendChild(imgEdit);
+
+                btnContainers.appendChild(form);
+                btnContainers.appendChild(btnEdit);
+
+                container.appendChild(btnContainers);
+                container.appendChild(figure);
+                container.appendChild(name);
+                container.appendChild(category);
+                container.appendChild(price);
+
+                container.classList.add('product');
+
+                newDrinks.appendChild(container);
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
 
 updateIngredients();
 
 // Funcionalidad para agregar ingredientes
-addEventSubmit.addEventListener("click", () =>{
+addEventSubmit.addEventListener("click", () => {
     const ingredientName = addIngredientName.value;
     const ingredientCategory = addIngredientCategory.value;
     const ingredientPrice = addIngredientPrice.value;
     const ingredientItems = addIngredientItems.value;
-    
-    if(ingredientName === "" || ingredientCategory === "" || ingredientPrice === ""){
+
+    if (ingredientName === "" || ingredientCategory === "" || ingredientPrice === "") {
         let requeridos = document.querySelector("#error");
         requeridos.classList.remove('hide-message');
         addEventContainer.classList.add('error-add-new-event');
@@ -237,11 +275,11 @@ addEventSubmit.addEventListener("click", () =>{
         addEventInput.classList.add('error-add-event-input');
         requeridos.classList.add('error-message');
         let mensajeError = document.querySelector("#errorMensaje");
-        mensajeError.textContent = "Debes proporcionar todos los campos";   
+        mensajeError.textContent = "Debes proporcionar todos los campos";
         return;
     }
 
-    const newEvent = {
+    /*const newEvent = {
         ingrediente: ingredientName,
         categoria: ingredientCategory,
         precio: ingredientPrice,
@@ -253,8 +291,26 @@ addEventSubmit.addEventListener("click", () =>{
         categoria: ingredientCategory,
         precio: ingredientPrice,
         cantidad: ingredientItems
+    });*/
+
+    axios.post('http://localhost:3000/api/ingredients', {
+        nombre: ingredientName,
+        cantidad: ingredientItems,
+        categoria: ingredientCategory,
+        precio: ingredientPrice
+    })
+    .then(response => {
+        if (response.status === 200) {
+            if (response.data.sqlMessage !== undefined) {
+                alert(response.data.sqlMessage);
+            }
+            updateIngredients();
+        }
+    })
+    .catch(error => {
+        console.log(error);
     });
-    
+
     //console.log(INGREDIENTES);
 
     addIngredientName.value = "";
@@ -262,93 +318,139 @@ addEventSubmit.addEventListener("click", () =>{
     addIngredientPrice.value = "";
 
     close();
-    updateIngredients();
+    //updateIngredients();
 });
 
-function editarIngrediente(parent){
+function editarIngrediente(parent) {
     console.log(parent);
     //Abrir ventana modal
     let nombre = parent.querySelector('.drink-name').textContent;
     let icon = document.createElement('figure');
     icon = parent.querySelector('figure').querySelector('img');
-    const price_aux = parent.querySelector('.price');
-    let price = price_aux.querySelector('span').textContent;
+
+
+    /*const price_aux = parent.querySelector('.price');
+    let price = price_aux.querySelector('span').textContent;*/
 
     // Recuperar ventana modal
     const modal = document.querySelector('.edit-ingredient');
     modal.innerHTML = '';
+    let editSection = '';
 
-    // Modificar elementos
-    let editSection = `
-    <section class="ingredient-title">
-        <h3 class="edit-ingredient-title">Editar Ingrediente</h3>
-        <button class="close-edit">x</button>
-    </section>
-    <img src="${icon.src}" alt="Edit">
-    <section class="edit-ingredient-input">
-        <p id="error-edit" class="hide-message-edit">
-            <strong id="error-title-edit">Error</strong>
-            <label id="errorMensaje-edit"></label>
-        </p>
-        <input type="text" placeholder="Precio: ${price}" class="ingredient-price-edit">
-        <input type="text" placeholder="Cantidad: ${'10'}" class="ingredient-items-edit">
-    </section>
-    <div class="send-edit">
-        <button class="save-event-btn">Guardar</button>
-    </div>`;
+    let price = 0;
+    let items = 0;
 
+    axios.get(`http://localhost:3000/api/ingredients/${nombre}`)
+    .then(response => {
+        const data = response.data;
+        // Crear los nuevo elementos HTML
+        price = data.precio;
+        items = data.cantidad;
+        
+        // Modificar elementos
+        editSection = `
+        <section class="ingredient-title">
+            <h3 class="edit-ingredient-title">Editar Ingrediente</h3>
+            <button class="close-edit">x</button>
+        </section>
+        <img src="${icon.src}" alt="Edit">
+        <section class="edit-ingredient-input">
+            <p id="error-edit" class="hide-message-edit">
+                <strong id="error-title-edit">Error</strong>
+                <label id="errorMensaje-edit"></label>
+            </p>
+            <input type="text" placeholder="Precio: ${price}" class="ingredient-price-edit">
+            <input type="text" placeholder="Cantidad: ${items}" class="ingredient-items-edit">
+        </section>
+        <div class="send-edit">
+            <button class="save-event-btn">Guardar</button>
+        </div>`;
 
-    console.log(price);
-    modal.innerHTML += editSection;
-    modal.classList.remove('hide');
+        modal.innerHTML += editSection;
+        modal.classList.remove('hide');
 
-    shape.classList.remove('hide');
+        shape.classList.remove('hide');
 
-    const inputPrice = modal.querySelector('.ingredient-price-edit');
-    inputPrice.addEventListener('change', ()=>{
-        for (let i = 0; i < INGREDIENTES.length; i++){
-            let ingredient = INGREDIENTES[i];
-            if(ingredient.ingrediente === nombre){
-                INGREDIENTES[i].precio = inputPrice.value;
-                console.log(INGREDIENTES[i].precio);
-            }
-        }
-    });
-    //Actualizar los datos
-    const inputItems = modal.querySelector('.ingredient-items-edit');
-    inputItems.addEventListener('change', ()=>{
-        for (let i = 0; i < INGREDIENTES.length; i++){
-            let ingredient = INGREDIENTES[i];
-            if(ingredient.ingrediente === nombre){
-                INGREDIENTES[i].cantidad = inputItems.value;
-                console.log("Cantidad" + INGREDIENTES[i].cantidad);
-            }
-        }
-    });
-    
-    console.log('Editando');
-    const saveChanges = modal.querySelector('.save-event-btn');
-    const cancelBtn = document.querySelector('.cancel');
-    
-    saveChanges.addEventListener('click', ()=>{
-        updateIngredients();
-        //Cerrar ventana
-        console.log('Cerrado');
+        const inputPrice = modal.querySelector('.ingredient-price-edit');
 
+        //Actualizar los datos
+        inputPrice.addEventListener('change', () => {
+            /*for (let i = 0; i < INGREDIENTES.length; i++) {
+                let ingredient = INGREDIENTES[i];
+                if (ingredient.ingrediente === nombre) {
+                    INGREDIENTES[i].precio = inputPrice.value;
+                    console.log(INGREDIENTES[i].precio);
+                }
+            }*/
+            // Update
+            axios.patch(`http://localhost:3000/api/ingredients/${nombre}`, {
+                precio: inputPrice.value
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    if (response.data.sqlMessage !== undefined) {
+                        alert(response.data.sqlMessage);
+                    }
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        });
+
+        const inputItems = modal.querySelector('.ingredient-items-edit');
+        inputItems.addEventListener('change', () => {
+            /*for (let i = 0; i < INGREDIENTES.length; i++) {
+                let ingredient = INGREDIENTES[i];
+                if (ingredient.ingrediente === nombre) {
+                    INGREDIENTES[i].cantidad = inputItems.value;
+                    console.log("Cantidad" + INGREDIENTES[i].cantidad);
+                }
+            }*/
+            axios.patch(`http://localhost:3000/api/ingredients/${nombre}`, {
+                cantidad: inputItems.value
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    if (response.data.sqlMessage !== undefined) {
+                        alert(response.data.sqlMessage);
+                    }
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        });
+
+        console.log('Editando');
+        const saveChanges = modal.querySelector('.save-event-btn');
+        const cancelBtn = document.querySelector('.cancel');
+
+        saveChanges.addEventListener('click', () => {
+            updateIngredients();
+            //Cerrar ventana
+            console.log('Cerrado');
+
+            editContainer.classList.add('hide');
+            cancelBtn.classList.add('hide');
+            shape.classList.add('hide');
+        });
+
+        const closeBtn = document.querySelector('.close-edit');
+        closeBtn.addEventListener('click', () => {
         editContainer.classList.add('hide');
-        cancelBtn.classList.add('hide');
         shape.classList.add('hide');
+
+    });
+    })
+    .catch(error => {
+        console.log(error);
     });
 
-    const closeBtn = document.querySelector('.close-edit');
-    closeBtn.addEventListener('click', ()=>{
-        editContainer.classList.add('hide');
-        shape.classList.add('hide');
-    });
     //editBtn.removeEventListener('click');
 }
 
-function eliminarIngrediente(parent){
+function eliminarIngrediente(parent) {
     //console.log(parent);
 
     const product = parent.querySelector('.drink-name');
@@ -356,15 +458,27 @@ function eliminarIngrediente(parent){
     console.log(nombre);
 
     //Eliminar
-    for (let i = 0; i < INGREDIENTES.length; i++){
+    /*for (let i = 0; i < INGREDIENTES.length; i++) {
         let ingredient = INGREDIENTES[i];
         console.log(INGREDIENTES);
         console.log("Ingrediente a eliminar" + ingredient.ingrediente);
-        if(ingredient.ingrediente === nombre){
-            
+        if (ingredient.ingrediente === nombre) {
+
             delete INGREDIENTES[i];
         }
-    }
+    }*/
+
+    axios.delete(`http://localhost:3000/api/ingredients/${nombre}`)
+    .then(response => {
+        if (response.status === 200) {
+            if (response.data.sqlMessage !== undefined) {
+                alert(response.data.sqlMessage);
+            }
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
 
     const cancelBtn = document.querySelector('.cancel');
     cancelBtn.classList.add('hide');
@@ -373,15 +487,15 @@ function eliminarIngrediente(parent){
 }
 
 // Funcionalidad para seleccionar algun ingrediente
-function seleccionar(){
+function seleccionar() {
     const checkBoxes = document.querySelectorAll('.check');
     const products = document.querySelectorAll('.product');
 
-    checkBoxes.forEach(checkBox =>{
+    checkBoxes.forEach(checkBox => {
         checkBox.classList.remove('hide');
     });
 
-    products.forEach(product =>{
+    products.forEach(product => {
         product.style.margin = '0 1.5em 1em 1.5em';
         product.style.cursor = 'auto';
     });
@@ -389,15 +503,15 @@ function seleccionar(){
     // Recuperar los botones de edicion
     const btnContainers = document.querySelectorAll('.buttons-edit');
 
-    btnContainers.forEach(btnContainer =>{
+    btnContainers.forEach(btnContainer => {
         btnContainer.classList.remove('hide');
     });
 
     const cancelBtn = document.querySelector('.cancel');
     cancelBtn.classList.remove('hide');
 
-    cancelBtn.addEventListener('click', ()=>{
-        btnContainers.forEach(btnContainer =>{
+    cancelBtn.addEventListener('click', () => {
+        btnContainers.forEach(btnContainer => {
             btnContainer.classList.add('hide');
         });
         cancelBtn.classList.add('hide');
@@ -406,16 +520,16 @@ function seleccionar(){
     const editBtns = document.querySelectorAll('.edit-btn');
     const deleteBtns = document.querySelectorAll('.delete-frm');
 
-    editBtns.forEach(editBtn =>{
+    editBtns.forEach(editBtn => {
         // Funcionalidad para editar descripcion de un ingrediente
-        editBtn.addEventListener('click', ()=>{
+        editBtn.addEventListener('click', () => {
             editarIngrediente(editBtn.parentNode.parentNode);
         });
     });
 
-    deleteBtns.forEach(deleteBtn =>{
+    deleteBtns.forEach(deleteBtn => {
         // Funcionalidad para eliminar un ingrediente
-        deleteBtn.addEventListener('click', (event)=>{
+        deleteBtn.addEventListener('click', (event) => {
             event.preventDefault();
             //console.log(deleteBtn.parentNode.parentNode);
             eliminarIngrediente(deleteBtn.parentNode.parentNode);
