@@ -257,7 +257,8 @@ function updateIngredients(){
                 const img = document.createElement('img');
                 const label = document.createElement('p');
             
-                img.src = 'images/ingredientes/default.png';
+                console.log(data.ingrediente);
+                img.src = `images/ingredientes/${data.ingrediente}.png`;
 
                 img.alt = 'Topping';
             
