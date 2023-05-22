@@ -1,5 +1,57 @@
-//Funcionalidad para mostrar toppings
+let precioTotal = 0;
 
+//Funcionalidad para mandar el producto elegido
+function chooseProduct(event){
+    let nameProduct = event.currentTarget.querySelector('.drink-option-name').textContent;
+
+    console.log("Producto: " + nameProduct);
+
+    // Se asignan los precios
+    if(nameProduct === 'Agua'){
+        precioTotal = 50;
+    }
+    else if (nameProduct === 'Café Helado(leche entera)'){
+        precioTotal = 80;
+    }
+    else if (nameProduct === 'Café Caliente(leche entera)'){
+        precioTotal = 90;
+    }
+    else if (nameProduct === 'Café Helado(leche light)'){
+        precioTotal = 80;
+    }
+    else if (nameProduct === 'Café Caliente(leche light)'){
+        precio = 90;
+    }
+    else if (nameProduct === 'Helado'){
+        precioTotal = 30;
+    }
+
+    const editContainer = document.querySelector('.edit-drink');
+
+    console.log(editContainer);
+
+    const bebida = editContainer.querySelector('.drink-glass');
+
+    bebida.src = `images/productos/${nameProduct}.png`;
+
+    //Recuperar el contenedor de opciones de productos
+    const productContainer = document.querySelector('.choose');
+    productContainer.classList.add('oculto');
+
+    editContainer.classList.remove('oculto');
+}
+
+//Recuperar el contenedor de opciones de productos
+const prductContainer = document.querySelector('.choose');
+
+//Recuperar el contenedor de cada producto
+const optionContainer = document.querySelectorAll('.drink-option');
+
+optionContainer.forEach(option =>{
+    option.addEventListener('click', chooseProduct);
+});
+
+//Funcionalidad para mostrar toppings
 function desplegar(event){
     const topping = document.querySelector('#topping');
     const fruit = document.querySelector('#fruits');
@@ -64,9 +116,28 @@ function desplegar(event){
 
 //Funcionalidad para agregar ingredientes a la bebida
 let numTopping = 0;
+let recipe = '';
 
 function addIngredient(event){
+
     if(numTopping < 6){
+        let nameIngredient = event.currentTarget.querySelector('.label').textContent;
+
+        recipe += nameIngredient + ', ';
+        console.log(recipe);
+
+        //Peticion para recuperar el precio del ingrediente
+        axios.get(`http://localhost:3000/api/ingredients/${nameIngredient}`)
+        .then(response => {
+            const data = response.data;
+            // Crear los nuevo elementos HTML
+            precioTotal = precioTotal + data.precio;
+            console.log("Precio: ", precioTotal);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
         let img = event.currentTarget.querySelector('img');
         numTopping += 1;
 
@@ -125,6 +196,29 @@ function mixIngredients(){
         }
     });
 
+    // Se recupera el nombre de la bebida
+    const newName = document.querySelector('#new-drink-name').value;
+    //console.log(newName);
+
+    // Se recupera el precio total
+
+    // Se manda el nuevo producto a la base de datos
+    axios.post('http://localhost:3000/api/products', {
+        nombre: newName,
+        ingredientes: recipe,
+        precio: precioTotal
+    })
+    .then(response => {
+        if (response.status === 200) {
+            if (response.data.sqlMessage !== undefined) {
+                alert(response.data.sqlMessage);
+            }
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
     const result = document.querySelector('.drink-result');
     const drink = document.querySelector('.drink-glass');
 
@@ -133,105 +227,12 @@ function mixIngredients(){
 
 }
 
-
-// Arreglo provisional
-const INGREDIENTES = [
-    {
-        ingrediente: 'fresas',
-        categoria: 'Frutas',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'nueces',
-        categoria: 'Topping',
-        precio: 5,
-        cantidad: 0
-    },
-    {
-        ingrediente: 'crema batida',
-        categoria: 'Frutas',
-        precio: 5,
-        cantidad: 0
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Frutas',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Frutas',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Salsas y Jarabes',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Topping',
-        precio: 5,
-        cantidad: 10
-    },
-    {
-        ingrediente: 'fresas',
-        categoria: 'Salsas y Jarabes',
-        precio: 5,
-        cantidad: 10
-    },
-];
-
 // Funcionalidad para mostrar los ingredientes en stock
 function updateIngredients(){
     // Recuperar los contenedores
     const section1 = document.querySelector('#topping');
     const section2 = document.querySelector('#fruits');
     const section3 = document.querySelector('#syrup');
-
-    /*INGREDIENTES.forEach((event) =>{
-        let section = '';
-
-        if(event.categoria === 'Topping'){
-            // Recuperar el contenedor para mostrar los ingredientes
-            section = section1;
-        }
-        else if(event.categoria === 'Frutas'){
-            // Recuperar el contenedor para mostrar los ingredientes
-            section = section2;
-        }
-        else if(event.categoria === 'Salsas y Jarabes'){
-            // Recuperar el contenedor para mostrar los ingredientes
-            section = section3;
-        }
-
-        const topping = document.createElement('article');
-        const figure = document.createElement('figure');
-        const img = document.createElement('img');
-        const label = document.createElement('p');
-    
-        img.src = 'images/blueberries.png';
-        img.alt = 'Topping';
-    
-        figure.appendChild(img);
-    
-        label.textContent = event.ingrediente;
-        label.classList.add('label');
-    
-        topping.classList.add('topping');
-        topping.appendChild(figure);
-        topping.appendChild(label);
-
-        if (event.cantidad <= 0){
-            topping.classList.add('disable');
-        }
-
-        section.appendChild(topping);
-    });*/
 
     let section = '';
     axios.get(`http://localhost:3000/api/ingredients`)
@@ -275,25 +276,25 @@ function updateIngredients(){
     
                 section.appendChild(topping);
             });
+
+            const toppings = document.querySelectorAll('.ingredient');
+            toppings.forEach(option =>{
+                option.addEventListener('click', desplegar);
+            });
+
+            const ingredients = document.querySelectorAll('.topping');
+            ingredients.forEach(ingredient =>{
+                if(!ingredient.classList.contains('disable')){
+                    ingredient.addEventListener('click', addIngredient);
+                }
+            });
+
+            const createBtn = document.getElementById('create');
+            createBtn.addEventListener('click', mixIngredients);
         })
         .catch(error => {
             console.log(error);
         });
-
-    const toppings = document.querySelectorAll('.ingredient');
-    toppings.forEach(option =>{
-        option.addEventListener('click', desplegar);
-    });
-
-    const ingredients = document.querySelectorAll('.toppings');
-    ingredients.forEach(ingredient =>{
-        if(!ingredient.classList.contains('disable')){
-            ingredient.addEventListener('click', addIngredient);
-        }
-    });
-
-    const createBtn = document.getElementById('create');
-    createBtn.addEventListener('click', mixIngredients);
 }
 
 updateIngredients();
