@@ -160,6 +160,18 @@ function addIngredient(event){
     }
 }
 
+// Función para genera pedido
+function pedido(data){
+    const idContainer = document.querySelector('.id-drink-pedido');
+    const productContainer = document.querySelector('.product-pedido');
+    const recipeContainer = document.querySelector('.recipe-pedido');
+    const priceContainer = document.querySelector('.price-pedido');
+
+    idContainer.textContent = 'DIK' + data.id;
+    productContainer.textContent = data.nombre;
+    recipeContainer.textContent = data.ingredientes;
+    priceContainer.textContent = data.precio;
+}
 
 //Funcionalidad para mezclar ingredientes (animaciones)
 function mixIngredients(){
@@ -209,6 +221,10 @@ function mixIngredients(){
         precio: precioTotal
     })
     .then(response => {
+        const data = response.data;
+        console.log(data);
+        pedido(data);
+        order();
         if (response.status === 200) {
             if (response.data.sqlMessage !== undefined) {
                 alert(response.data.sqlMessage);
@@ -299,3 +315,18 @@ function updateIngredients(){
 }
 
 updateIngredients();
+
+// Funcionalidad para ordenar
+function order(){
+    const orderBtn = document.getElementById('order');
+    orderBtn.addEventListener('click', () =>{
+        const pedidoContainer = document.querySelector('.pedido');
+        pedidoContainer.style.display = 'flex';
+
+        const edit = document.querySelector('.edit-drink');
+        edit.classList.add('oculto');
+
+        const pedido = document.querySelector('.pedido');
+        pedido.classList.remove('oculto');
+    });
+}
