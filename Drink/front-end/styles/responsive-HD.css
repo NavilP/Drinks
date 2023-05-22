@@ -1,68 +1,60 @@
-@media screen and (min-width: 1080px) {
-    header .logo {
-        transform: translateY(-50%);
-        width: 12%;
-        margin-right: 2em;
-        height: auto;
+/* Media query para dispositivos de 720x1280px */
+@media screen and (max-width: 1130px) {
+    body {
+        font-size: 0.7em;
+        /* Tamaño de fuente reducido */
+        flex-wrap: wrap;
+        /* Añadido */
+        justify-content: center;
+        /* Añadido */
     }
 
-    header .options {
-        margin-left: auto;
-        display: flex;
-        width: 12em;
-    }
-
-    .best-seller {
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 2em;
-    }
-  
-    .best-seller .fish {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      width: 3em; /* Ajusta el ancho según tus necesidades */
-    }
-
-    .best-subtitle{
-        font-weight: 120%;
-    
-    }
-    figure{
-        width: auto;
-        max-height: 100%;
-    }
-
-    .carr {
-        flex-direction: column;
-        height: auto;
-        width: 90%;
-        margin: 5em 4em;
-        padding: 3em 2em;
-    }
-
-      .carr .item {
-        width: 33.33%;
-        float: left;
-        padding: 10px;
-        box-sizing: border-box;
-      }
-      
-      .carr .item img {
+    nav {
         width: 100%;
+        /* Modificado */
+        max-width: 300px;
+        /* Añadido */
         height: auto;
-        align-items: center;
-      }
-      
-      .carr .item .title {
-        font-size: 20px;
-      }
-  }
-  
+        /* Modificado */
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+        margin-bottom: 1em;
+    }
+
+    main {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        margin-bottom: 1em;
+    }
+
+    .title img {
+        width: 100%;
+        /* Imagen ajustada al ancho */
+        margin: 0;
+        margin-bottom: 1em;
+    }
+
+    .title .actualizar {
+        transform: none;
+        /* Eliminado el desplazamiento */
+        margin-bottom: 1em;
+    }
+
+    .new-drinks {
+        grid-template-columns: repeat(2, 1fr);
+        /* Cambio de 4 a 2 columnas */
+        grid-gap: 1em;
+        /* Espacio entre los elementos */
+    }
+
+    .product-search {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        margin-bottom: 1em;
+        transform: none;
+    }
+}
