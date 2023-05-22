@@ -80,6 +80,9 @@ search.addEventListener('click', () => {
     const searchBtn = document.querySelector('.search-btn');
     searchBtn.classList.remove('hide');
 
+    const okBtn = document.querySelector('#ok');
+    okBtn.classList.remove('hide');
+
     searchBtn.addEventListener('click', ()=>{
         let id = searchInput.value;
 
@@ -96,6 +99,13 @@ search.addEventListener('click', () => {
 
                 section.appendChild(msj);
                 section.classList.remove('hide');
+
+                okBtn.addEventListener('click', ()=>{
+                    section.classList.add('hide');
+                    searchBtn.classList.add('hide');
+                    okBtn.classList.add('hide');
+                    searchInput.classList.add('hide');
+                })
             }
             else {
                 const section = document.querySelector('.product-search');
@@ -132,6 +142,13 @@ search.addEventListener('click', () => {
 
                 section.appendChild(product);
                 section.classList.remove('hide');
+
+                okBtn.addEventListener('click', ()=>{
+                    section.classList.add('hide');
+                    searchBtn.classList.add('hide');
+                    okBtn.classList.add('hide');
+                    searchInput.classList.add('hide');
+                })
             }
         })
         .catch(error => {
