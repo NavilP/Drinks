@@ -189,7 +189,7 @@ main{
 }
 
 .best-subtitle {
-    font-weight: 500;
+    font-weight: 500px;
     align-items: center;
     text-align: center;
     width: 100%;
@@ -366,3 +366,176 @@ footer .suscribe .input {
     border: 1pt solid #bd87c1;
     color: #bd87c1;
 }
+
+/* Para dispsitivos de 720 x 1090px */
+@media (max-width: 720px) {
+    body {
+        font-size: 1em;
+        max-width: 720px;
+        margin: 0 auto;
+        display: grid;
+    }
+
+    header .logo {
+        transform: translateY(-50%);
+        width: 12%;
+        margin-right: 2em;
+        height: auto;
+    }
+
+    header .options {
+        margin-left: auto;
+        display: flex;
+        width: 12em;
+    }
+
+    .carr-drink {
+        float: right;
+        position: relative;
+        height: auto;
+        width: 8em;
+        z-index: 999;
+    }
+
+    .carr-title {
+        margin: 0;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+
+    .carr-drink {
+        float: none;
+        margin: 0 auto;
+        width: 70%;
+    }
+
+    .best-seller {
+       margin: 0 auto;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       align-items: center;
+       gap: 2em;
+
+   }
+   
+   .betta-fish {
+       display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+       margin-left: 0;
+   }
+   
+   .best-seller figure {
+       text-align: center;
+   }
+   
+   .best-seller .fish {
+       grid-template-columns: repeat(1, 1fr);
+   }
+
+    footer,
+    .promo,
+    .carr {
+        flex-direction: column;
+        height: auto;
+        width: 84%;
+        margin: 5em 1em;
+        padding: 3em 2em;
+    }
+
+    .betta-fish {
+        margin-left: 0;
+    }
+
+    .promo img {
+        width: 50%;
+        float: none;
+        margin-right: 0;
+    }
+
+    .promo .description h3 {
+        font-size: 3em;
+        width: 15em;
+        padding: 0 3em 0 3em;
+        margin-bottom: 1em;
+    }
+
+    .promo .description p {
+        padding: 0 3em 0 3em;
+        margin-bottom: 1em;
+    }
+}
+
+/* Para una pantalla de 1080 x 1920 */
+/* falta poner la imagen del header bien al centro*/
+@media screen and (min-width: 1080px) {
+    header .logo {
+        transform: translateY(-50%);
+        width: 12%;
+        margin-right: 2em;
+        height: auto;
+    }
+
+    header .options {
+        margin-left: auto;
+        display: flex;
+        width: 12em;
+    }
+
+    .best-seller {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2em;
+    }
+  
+    .best-seller .fish {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 3em; /* Ajusta el ancho según tus necesidades */
+    }
+
+    .best-subtitle{
+        font-weight: 120%;
+    
+    }
+    figure{
+        width: auto;
+        max-height: 100%;
+    }
+
+    .carr {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+        margin: 5em 4em;
+        padding: 3em 2em;
+    }
+
+      .carr .item {
+        width: 33.33%;
+        float: left;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      
+      .carr .item img {
+        width: 100%;
+        height: auto;
+        align-items: center;
+      }
+      
+      .carr .item .title {
+        font-size: 20px;
+      }
+  }
+  
