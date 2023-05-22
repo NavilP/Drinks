@@ -13,15 +13,5 @@ const BD = [
         user: 'Miguel',
         email: 'miguel@gmail.com',
         password: '123456',
-    },
-    {
-        user: 'Eliud',
-        email: 'eliud@gmail.com',
-        password: '123456',
-    },
-    {
-        user: 'Daniel',
-        email: 'daniel@gmail.com',
-        password: '123456',
     }
 ];

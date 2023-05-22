@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/personaliza.css">
+    <link rel="stylesheet" href="styles/pedido.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts/personaliza.js" defer></script>
     <title>Personaliza tu bebida</title>
@@ -21,17 +22,11 @@
             <!--Comprar-->
             <!--Personalizar-->
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index-user.html">Home</a></li>
                 <li><a href="#">Comprar</a></li>
                 <li class="active"><a href="#">Personalizar Bebida</a></li>
             </ul>
         </nav>
-        <section class="options">
-            <p class="log-in"><a href="#">Iniciar Sesión</a></p>
-            <img src="images/search.png" alt="Search" class="search">
-            <!--Inicio de Sesion-->
-            <!--Buscar-->
-        </section>
     </header>
 
     <main>
@@ -114,6 +109,30 @@
             </section>
         </section>
 
+
+        <!--Ver el pedido-->
+        <section class="pedido oculto">
+            <section class="logo-pedido">
+                <img src="images/logo.png" alt="Logo">
+            </section>        
+            <section class="hoja-pedido">
+                <h1 class="title">PEDIDO</h1>
+        
+                <h2>ID DE TU PEDIDO</h2>
+                <p class="id-drink-pedido"></p>
+        
+                <h2>TU PRODUCTO</h2>
+                <p class="product-pedido"></p>
+        
+                <h2>INGREDIENTES EXTRA</h2>
+                <p class="recipe-pedido"></p>
+        
+                <h2>TOTAL A PAGAR</h2>
+                <p class="price-pedido"></p>
+            </section>
+        
+            <a href="personaliza.html"><button class="back">Regresar</button></a>
+        </section>
     </main>
 
 </body>

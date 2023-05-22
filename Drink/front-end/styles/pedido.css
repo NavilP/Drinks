@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.pedido {
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-pedido {
+    margin-top: 8em;
+    width: 25%;
+    height: 30em;
+    background-color: #47005e;
+    padding: 1.5em;
+    margin-right: 2em;
+    box-shadow: 0.5em 0.5em 0;
+    box-shadow: 0.5em 0.5em 0.25em;
+    box-shadow: 0.5em 0.5em 1.5em;
+}
+
+.logo-pedido img {
+    margin-top: 8em;
+    width: 100%;
+}
+
+.hoja-pedido {
+    margin-top: 8em;
+    width: 25%;
+    height: 30em;
+    background-color: #ebd7ec;
+    padding: 1.5em;
+    box-shadow: 0.5em 0.5em 0;
+    box-shadow: 0.5em 0.5em 0.25em;
+    box-shadow: 0.5em 0.5em 1.5em;
+}
+
+.hoja-pedido .title {
+    font-size: 3em;
+    font-weight: 200;
+    width: 4em;
+    border-bottom: 1pt solid #000;
+    margin-bottom: 1em;
+}
+
+.hoja-pedido h2 {
+    font-size: 1.2em;
+}
+
+.hoja-pedido p {
+    margin-bottom: 2em;
+}
+
+.back {
+    position: absolute;
+    border-radius: 2em;
+    outline: none;
+    border: none;
+    background-color: #47005e;
+    margin-top: 20em;
+    margin-left: 10em;
+    color: #fff;
+    height: 3em;
+    width: 8em;
+    cursor: pointer;
+}

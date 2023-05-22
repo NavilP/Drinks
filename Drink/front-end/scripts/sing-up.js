@@ -1,13 +1,3 @@
-function isInBD(usuario, correo){
-    let accept = false;
-    BD.forEach((user) =>{
-        if((usuario === user.user) && (correo === user.email)){
-            accept = true;
-        }
-    });
-    return accept;
-}
-
 function singUp(event) {
     event.preventDefault();
 
@@ -31,7 +21,7 @@ function singUp(event) {
 
     const check = document.getElementById('check');
 
-    if(!isInBD(usuario, correo)){
+    /*if(!isInBD(usuario, correo)){
         BD.push(data);
         console.log(BD);
         //window.location.href = "./login.html";
@@ -61,6 +51,46 @@ function singUp(event) {
         });
 
         check.checked = false;
+    }*/
+
+    if(!check.checked){
+        //Mandar mensaje de error
+        const error = document.getElementById('error-message2');
+        error.classList.remove('hide');
+
+        const inputBoxes = document.querySelectorAll('.inputbox');
+        inputBoxes.forEach(inputBox => {
+            inputBox.addEventListener('click', () =>{
+                error.classList.add('hide');
+            });
+        });
+    }
+    else{
+        axios.post('http://localhost:3000/api/users', {
+            nombre: usuario,
+            correo: correo,
+            password: contra
+        })
+        .then(response => {
+            if(response.data == 'Usuario registrado'){
+                window.location.href = "./index-user.html?id=" + usuario;
+            }
+            else{
+                //Mandar mensaje de error
+                const error = document.getElementById('error-message1');
+                error.classList.remove('hide');
+        
+                const inputBoxes = document.querySelectorAll('.inputbox');
+                inputBoxes.forEach(inputBox => {
+                    inputBox.addEventListener('click', () => {
+                        error.classList.add('hide');
+                    });
+                });
+        
+                check.checked = false;
+            }
+        })
+        .catch(error => console.error(error));
     }
     
     user.value = '';

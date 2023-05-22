@@ -353,12 +353,12 @@ footer .suscribe .input {
     outline: none;
     border-radius: 1.2em;
     height: 2.5em;
-    width: 7em;
+    width: 15em;
     color: #000;
     background-color: #bd87c1;
     font-family: "Relaway", Tahoma, Arial, sans-serif;
-    transform: translate(-110%, 10%);
     cursor: pointer;
+    margin-left: 7em;
 }
 
 #suscribe:hover {

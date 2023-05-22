@@ -74,98 +74,6 @@ function updateIngredients() {
 
     newDrinks.innerHTML = "";
 
-    /*INGREDIENTES.forEach((event) =>{
-        // Crear los nuevo elementos HTML
-        const container = document.createElement('article');
-        const figure = document.createElement('figure');
-        const img = document.createElement('img');
-        const name = document.createElement('p');
-        const category = document.createElement('p');
-        const spanCategory = document.createElement('span');
-        const price = document.createElement('p');
-        const spanPrice = document.createElement('span');
-        // Edit buttons
-        const btnContainers = document.createElement('div');
-        const form = document.createElement('form');
-        const input = document.createElement('input');
-        const btnDel = document.createElement('button');
-        const imgDel = document.createElement('img');
-        const btnEdit = document.createElement('button');
-        const imgEdit = document.createElement('img');
-        
-
-        //console.log(event);
-
-        img.src = 'images/strawberries.png';
-        img.alt = 'Nueva Bebida';
-            
-        figure.appendChild(img);
-
-        name.classList.add('drink-name');
-        name.textContent = event.ingrediente;
-
-        spanCategory.textContent = event.categoria;
-        category.classList.add('category');
-        category.textContent = 'Categoría: ';
-        category.appendChild(spanCategory);
-
-        spanPrice.textContent = event.precio;
-        price.classList.add('price');
-        price.textContent = 'Precio Extra: ';
-        price.appendChild(spanPrice);
-
-        //Edit
-        btnContainers.classList.add('buttons-edit');
-        btnContainers.classList.add('hide');
-
-        input.type = 'hidden';
-        input.name = 'id';
-
-        imgDel.src = 'images/borrar.png';
-        imgDel.alt = 'Eliminar';
-        imgDel.classList.add('trash');
-
-        btnDel.type = 'submit';
-        btnDel.classList.add('delete-btn');
-        btnDel.appendChild(imgDel);
-
-        form.method = 'POST';
-        //form.action = 'delete2';
-        //form.onsubmit = 'submitForm(event)';
-        form.classList.add('delete-frm');
-        form.appendChild(input);
-        form.appendChild(btnDel);
-
-        imgEdit.src = 'images/editar.png';
-        imgEdit.alt = 'Editar';
-        imgEdit.classList.add('pencil');
-
-        
-        btnEdit.classList.add('edit-btn');
-        btnEdit.appendChild(imgEdit);
-
-        btnContainers.appendChild(form);
-        btnContainers.appendChild(btnEdit);
-
-        container.appendChild(btnContainers);
-        container.appendChild(figure);
-        container.appendChild(name);
-        container.appendChild(category);
-        container.appendChild(price);
-
-        container.classList.add('product');
-
-        newDrinks.appendChild(container);
-        //console.log(container);
-    });
-
-    if(newDrinks === ""){
-        newDrinks = `
-        <section class="no-event">
-            <p>No hay reservaciones</p>
-        </section>
-        `;
-    }*/
     axios.get(`http://localhost:3000/api/ingredients`)
         .then(response => {
             const datos = response.data;
@@ -191,8 +99,8 @@ function updateIngredients() {
 
                 //console.log(event);
 
-                img.src = 'images/ingredientes/strawberries.png';
-                img.alt = 'Nueva Bebida';
+                img.src = `images/ingredientes/${data.ingrediente}.png`;
+                img.alt = 'Nuevo Ingrediente';
 
                 figure.appendChild(img);
 
