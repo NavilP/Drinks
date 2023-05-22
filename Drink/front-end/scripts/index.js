@@ -1,0 +1,1 @@
+const newDrink = document.querySelector('.new-drink');
