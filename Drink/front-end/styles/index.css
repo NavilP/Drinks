@@ -367,8 +367,9 @@ footer .suscribe .input {
     color: #bd87c1;
 }
 
+/* -----------------------------------------------------------------------------------------------*/
 /* Para dispsitivos de 720 x 1090px */
-@media (max-width: 720px) {
+@media screen and (max-width: 720px) {
     body {
         font-size: 1em;
         max-width: 720px;
@@ -471,7 +472,7 @@ footer .suscribe .input {
 
 /* Para una pantalla de 1080 x 1920 */
 /* falta poner la imagen del header bien al centro*/
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 721px) and (max-width: 1135px) {
     header .logo {
         transform: translateY(-50%);
         width: 12%;
